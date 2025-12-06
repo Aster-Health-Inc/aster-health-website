@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aster - Your Personal Wellness Companion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f4ff 0%, #f0f9ff 50%, #f0fff4 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+            top: -300px;
+            right: -200px;
+            animation: float 8s ease-in-out infinite;
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(129, 199, 132, 0.08) 0%, transparent 70%);
+            bottom: -250px;
+            left: -150px;
+            animation: float 10s ease-in-out infinite reverse;
+            border-radius: 50%;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(5deg); }
+            66% { transform: translate(-20px, 20px) rotate(-5deg); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b5cf6 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .tagline {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: #4b5563;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+            line-height: 1.6;
+            padding: 0 1rem;
+            font-weight: 500;
+        }
+
+        .cta-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2.5rem;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .waitlist-section {
+            margin-top: 3rem;
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 1rem;
+        }
+
+        .waitlist-text {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #6b7280;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .waitlist-form {
+            display: flex;
+            gap: 0.75rem;
+            width: 100%;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 60px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 50px;
+            outline: none;
+            background: transparent;
+            min-width: 0;
+        }
+
+        .email-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .waitlist-button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .waitlist-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        .cta-button {
+            padding: 1.25rem 3rem;
+            font-size: clamp(1.05rem, 2.5vw, 1.15rem);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+            box-shadow: 0 10px 35px rgba(139, 92, 246, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 45px rgba(139, 92, 246, 0.4);
+        }
+
+        .features {
+            padding: 5rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            padding: 0 1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: #6b7280;
+            margin-bottom: 4rem;
+            padding: 0 1rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+            border-color: rgba(139, 92, 246, 0.2);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-title {
+            font-size: clamp(1.35rem, 3vw, 1.6rem);
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .feature-description {
+            color: #6b7280;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .consolidation {
+            padding: 5rem 1.5rem;
+            background: linear-gradient(135deg, #fafafa 0%, #f9fafb 100%);
+        }
+
+        .consolidation-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .consolidation-content h2 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .consolidation-subtitle {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: #6b7280;
+            margin-bottom: 4rem;
+            padding: 0 1rem;
+        }
+
+        .app-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            align-items: start;
+        }
+
+        .old-way, .new-way {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .old-way {
+            border-left: 4px solid #ef4444;
+        }
+
+        .new-way {
+            border-left: 4px solid #8b5cf6;
+            position: relative;
+            overflow: visible;
+        }
+
+        .new-way::before {
+            content: '⭐ BEST VALUE';
+            position: absolute;
+            top: 20px;
+            right: -12px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            padding: 8px 16px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .old-way h3, .new-way h3 {
+            font-size: clamp(1.4rem, 3vw, 1.75rem);
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .app-list {
+            margin-bottom: 2rem;
+        }
+
+        .app-item {
+            padding: 1rem 1.25rem;
+            margin: 0.75rem 0;
+            background: #fef2f2;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            color: #dc2626;
+            font-weight: 500;
+            border-left: 3px solid #ef4444;
+        }
+
+        .aster-all-in-one {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .aster-feature {
+            padding: 1rem 0.75rem;
+            background: linear-gradient(135deg, #f5f3ff, #faf5ff);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: #7c3aed;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .total {
+            font-size: 1.05rem;
+            color: #dc2626;
+            font-weight: 700;
+            padding: 1.25rem;
+            background: #fef2f2;
+            border-radius: 12px;
+            border-left: 3px solid #ef4444;
+        }
+
+        .total-aster {
+            font-size: 1.15rem;
+            color: #7c3aed;
+            font-weight: 700;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, #f5f3ff, #faf5ff);
+            border-radius: 12px;
+            border-left: 3px solid #8b5cf6;
+        }
+
+        .consolidation-highlight {
+            max-width: 900px;
+            margin: 3rem auto 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f3ff, #faf5ff);
+            border-radius: 20px;
+            border-left: 4px solid #8b5cf6;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .consolidation-highlight p {
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            color: #4b5563;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .unique-value {
+            background: linear-gradient(135deg, #8b5cf6 0%, #10b981 100%);
+            padding: 5rem 1.5rem;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unique-value::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+            border-radius: 50%;
+        }
+
+        .unique-value h2 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin-bottom: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .value-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .value-point {
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .value-point:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .value-point h3 {
+            font-size: clamp(1.35rem, 3vw, 1.6rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .value-point p {
+            font-size: 1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        .demo-section {
+            padding: 5rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            background: white;
+        }
+
+        .demo-subtitle {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: #6b7280;
+            margin-bottom: 4rem;
+            padding: 0 1rem;
+        }
+
+        .demo-grid {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-card {
+            flex: 1 1 260px;
+            min-width: 260px;
+            max-width: 280px;
+            background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+            padding: 2.5rem 2rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+            border-color: rgba(139, 92, 246, 0.2);
+        }
+
+        .demo-card h4 {
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            color: #8b5cf6;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .demo-card p {
+            font-size: 1rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .final-cta {
+            padding: 5rem 1.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, #f8f4ff 0%, #f0f9ff 100%);
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .final-cta p {
+            font-size: clamp(1.05rem, 3vw, 1.25rem);
+            color: #6b7280;
+            margin-bottom: 2.5rem;
+            padding: 0 1rem;
+            font-weight: 500;
+        }
+
+        .final-cta .cta-button {
+            font-size: clamp(1.05rem, 3vw, 1.2rem);
+            padding: 1.35rem 3.5rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .demo-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .demo-card {
+                max-width: 100%;
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .waitlist-form {
+                flex-direction: column;
+                padding: 0.75rem;
+                gap: 0.5rem;
+            }
+
+            .waitlist-button {
+                width: 100%;
+            }
+
+            .aster-all-in-one {
+                grid-template-columns: 1fr;
+            }
+
+            .app-comparison {
+                gap: 2rem;
+            }
+
+            .new-way::before {
+                top: 10px;
+                right: 10px;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Body Speaks.<br>We Listen.</h1>
+            <p class="tagline">The only wellness app that truly understands your unique hormonal patterns</p>
+            
+            <div class="cta-section">
+                <a href="#" class="cta-button">Download Aster</a>
+            </div>
+            
+            <div class="waitlist-section">
+                <p class="waitlist-text">Join the Waitlist</p>
+                <form class="waitlist-form" onsubmit="handleWaitlistSubmit(event)">
+                    <input type="email" placeholder="Enter your email" class="email-input" required>
+                    <button type="submit" class="waitlist-button">Join</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2 class="section-title">Everything You Need, Nothing You Don't</h2>
+        <p class="section-subtitle">Four powerful features working together for complete wellness understanding</p>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌸</div>
+                <h3 class="feature-title">Cycle Intelligence</h3>
+                <p class="feature-description">Know what's coming before your body tells you. Track patterns, predict symptoms, and plan your life around your natural rhythm.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📸</div>
+                <h3 class="feature-title">Snap & Track Nutrition</h3>
+                <p class="feature-description">Take a photo of your meal. That's it. Our AI analyzes everything—calories, macros, and how it affects your hormones.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💡</div>
+                <h3 class="feature-title">Smart Insights</h3>
+                <p class="feature-description">See the connections between your sleep, energy, mood, and cycle. Understand your body's story in real-time.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3 class="feature-title">Your Wellness Buddy</h3>
+                <p class="feature-description">Ask anything. From "When's my next period?" to "Why am I so tired?"—get instant, personalized answers 24/7.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="consolidation">
+        <div class="consolidation-content">
+            <h2>Stop Juggling Apps. Start Living.</h2>
+            <p class="consolidation-subtitle">Replace your entire wellness stack with one intelligent app</p>
+            
+            <div class="app-comparison">
+                <div class="old-way">
+                    <h3>❌ The Old Way</h3>
+                    <div class="app-list">
+                        <div class="app-item">📅 Period tracker - $4.99/mo</div>
+                        <div class="app-item">🍎 Calorie counter - $9.99/mo</div>
+                        <div class="app-item">💪 Fitness tracker - $12.99/mo</div>
+                        <div class="app-item">😴 Sleep monitor - $6.99/mo</div>
+                        <div class="app-item">📝 Mood journal - $3.99/mo</div>
+                    </div>
+                    <div class="total">Total: $38.95/month + mental overload</div>
+                </div>
+                
+                <div class="new-way">
+                    <h3>✨ The Aster Way</h3>
+                    <div class="aster-all-in-one">
+                        <div class="aster-feature">🌸 Cycle tracking</div>
+                        <div class="aster-feature">📸 Nutrition analysis</div>
+                        <div class="aster-feature">💡 Energy & mood insights</div>
+                        <div class="aster-feature">💬 AI wellness coach</div>
+                        <div class="aster-feature">🎯 Personalized recommendations</div>
+                    </div>
+                    <div class="total-aster">One app. Complete picture.</div>
+                </div>
+            </div>
+            
+            <div class="consolidation-highlight">
+                <p>No more switching between apps, paying multiple subscriptions, or wondering why your data doesn't connect. Aster sees the whole you—because your body doesn't work in silos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="unique-value">
+        <h2>Why Aster Is Different</h2>
+        <div class="value-points">
+            <div class="value-point">
+                <h3>🎯 Hyper-Personalized</h3>
+                <p>Not generic advice. Real insights based on YOUR body's data, patterns, and unique hormonal signature.</p>
+            </div>
+            <div class="value-point">
+                <h3>⚡ Effortlessly Simple</h3>
+                <p>No manual logging marathons. Snap your food, tap your mood, get insights. Wellness tracking in seconds, not minutes.</p>
+            </div>
+            <div class="value-point">
+                <h3>🧠 AI That Actually Helps</h3>
+                <p>Our AI connects the dots between your cycle, nutrition, energy, and mood—showing you what matters most.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="demo-section">
+        <h2 class="section-title">See Aster In Action</h2>
+        <p class="demo-subtitle">One app. Four powerful features. Complete wellness understanding.</p>
+        
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h4>Smart Insights</h4>
+                <p>Your wellness at a glance</p>
+            </div>
+            <div class="demo-card">
+                <h4>Nutrition Tracking</h4>
+                <p>Snap, analyze, understand</p>
+            </div>
+            <div class="demo-card">
+                <h4>Cycle Tracking</h4>
+                <p>Predict & prepare</p>
+            </div>
+            <div class="demo-card">
+                <h4>AI Wellness Buddy</h4>
+                <p>Ask anything, anytime</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <h2>Ready to Understand Your Body?</h2>
+        <p>Join thousands of women who've discovered the power of personalized wellness</p>
+        <a href="#" class="cta-button">Start Your Journey Free</a>
+        <p style="margin-top: 1.5rem; color: #9ca3af; font-size: 0.95rem; font-weight: 500;">Available on iOS • Free to start • No credit card required</p>
+    </section>
+
+    <script>
+        function handleWaitlistSubmit(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('.email-input').value;
+            
+            // TODO: Replace with your Google Sheets integration
+            console.log('Email submitted:', email);
+            
+            alert('Thank you for joining the waitlist! We\'ll be in touch soon.');
+            event.target.reset();
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .value-point, .demo-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
