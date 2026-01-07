@@ -738,15 +738,26 @@
     </section>
 
     <script>
+        const WAITLIST_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxkfuLdhEaWZyWqiRLTrazaWlvsVRub2wMI3aaUTrPy3c1039cpyRzBcxYeQAp0lfEO9Q/exec';
+
         function handleWaitlistSubmit(event) {
             event.preventDefault();
             const email = event.target.querySelector('.email-input').value;
             
-            // TODO: Replace with your Google Sheets integration
-            console.log('Email submitted:', email);
-            
-            alert('Thank you for joining the waitlist! We\'ll be in touch soon.');
-            event.target.reset();
+            if (!WAITLIST_ENDPOINT || WAITLIST_ENDPOINT.includes('PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE')) {
+                alert('Waitlist is not configured yet. Please try again later.');
+                return;
+            }
+
+            const url = `${WAITLIST_ENDPOINT}?email=${encodeURIComponent(email)}&t=${Date.now()}`;
+            fetch(url, { method: 'GET', mode: 'no-cors' })
+                .then(() => {
+                    alert('Thank you for joining the waitlist! We\'ll be in touch soon.');
+                    event.target.reset();
+                })
+                .catch(() => {
+                    alert('Sorry, something went wrong. Please try again.');
+                });
         }
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
