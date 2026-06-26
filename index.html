@@ -13,6 +13,7 @@
     <meta property="og:title" content="Aster · A daily, cycle-aware wellness companion">
     <meta property="og:description" content="Not another tracker. A coach that helps you feel seen. Cycle-aware wellness for how you actually feel: hormonally, emotionally, and practically.">
     <meta property="og:image" content="https://aster.fit/android-chrome-512x512.png">
+    <meta property="og:site_name" content="Aster">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Aster · A daily, cycle-aware wellness companion">
     <meta name="twitter:description" content="Not another tracker. A coach that helps you feel seen.">
@@ -24,6 +25,7 @@
     <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
     <link rel="apple-touch-icon" href="/appletouch.png" sizes="180x180">
     <link rel="manifest" href="/site.webmanifest">
+    <meta name="apple-mobile-web-app-title" content="Aster">
 
     <!-- Fonts: Fraunces (editorial serif) + Inter (clean sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -567,11 +569,40 @@
             .reveal { opacity: 1; transform: none; transition: none; }
             .hero::before, .hero::after { animation: none; }
         }
+        /* ---------- Accessibility: skip link + focus ---------- */
+        .skip-link { position: absolute; left: -9999px; top: 0; z-index: 100; background: var(--plum); color: #fff; padding: 0.7rem 1.1rem; border-radius: 0 0 12px 0; font-size: 0.9rem; font-weight: 500; text-decoration: none; }
+        .skip-link:focus { left: 0; }
+        :focus-visible { outline: 2px solid var(--plum); outline-offset: 3px; border-radius: 5px; }
+        #main:focus { outline: none; }
+
+        /* ---------- Privacy / Trust ---------- */
+        .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 62rem; margin: 0 auto; }
+        .trust-item { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem 1.6rem; text-align: center; box-shadow: var(--shadow-sm); }
+        .trust-item .ic { width: 50px; height: 50px; border-radius: 15px; display: grid; place-items: center; background: var(--sunset-soft); color: var(--plum); margin: 0 auto 1.1rem; }
+        .trust-item .ic svg { width: 23px; height: 23px; }
+        .trust-item h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .trust-item p { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; }
+        @media (max-width: 760px) { .trust-grid { grid-template-columns: 1fr; } }
+
+        /* ---------- FAQ ---------- */
+        .faq { background: var(--cream-2); }
+        .faq .wrap { max-width: 48rem; }
+        .faq-list { margin-top: 2.5rem; }
+        .faq-item { border-bottom: 1px solid var(--line); }
+        .faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; padding: 1.4rem 0; font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.18rem; color: var(--ink); }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary .chev { flex: none; color: var(--plum); transition: transform 0.3s ease; }
+        .faq-item summary .chev svg { width: 20px; height: 20px; display: block; }
+        .faq-item[open] summary .chev { transform: rotate(180deg); }
+        .faq-item .a { padding: 0 0 1.4rem; color: var(--ink-soft); font-size: 1rem; line-height: 1.7; max-width: 42rem; }
+        .faq-item .a a { color: var(--plum); text-decoration: underline; text-underline-offset: 2px; }
     </style>
 </head>
 <body>
 
     <!-- ================= NAV ================= -->
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="nav" id="nav">
         <div class="nav-inner">
             <a href="#top" class="brand" aria-label="Aster home">
@@ -588,6 +619,8 @@
     </header>
 
     <a id="top"></a>
+
+    <main id="main" tabindex="-1">
 
     <!-- ================= HERO ================= -->
     <section class="hero">
@@ -800,6 +833,70 @@
         </div>
     </section>
 
+    <!-- ================= PRIVACY / TRUST ================= -->
+    <section class="block trust" id="privacy" aria-label="Your privacy">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">Private by design</span>
+                <h2>Your body. Your data. <em>Yours alone.</em></h2>
+                <p>Aster only works if you trust it, so we hold your information to the standard we'd want for our own.</p>
+            </div>
+            <div class="trust-grid">
+                <div class="trust-item reveal">
+                    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+                    <h3>Never sold</h3>
+                    <p>We don't sell your data, and we never will. Your cycle is nobody's business but yours.</p>
+                </div>
+                <div class="trust-item reveal">
+                    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="13" y2="8"/><line x1="17" y1="8" x2="20" y2="8"/><circle cx="15" cy="8" r="2.1"/><line x1="4" y1="16" x2="7" y2="16"/><line x1="11" y1="16" x2="20" y2="16"/><circle cx="9" cy="16" r="2.1"/></svg></span>
+                    <h3>Yours to control</h3>
+                    <p>Review, export, or delete everything you've shared, anytime. It's your information to keep or take back.</p>
+                </div>
+                <div class="trust-item reveal">
+                    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3Z"/><path d="M9.2 12l1.9 1.9 3.7-4"/></svg></span>
+                    <h3>Only from you</h3>
+                    <p>We don't buy or collect your information from anyone else, and we keep what you share secure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="block faq" id="faq" aria-label="Frequently asked questions">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">Good questions</span>
+                <h2>Everything you might be wondering</h2>
+            </div>
+            <div class="faq-list reveal">
+                <details class="faq-item">
+                    <summary>When does Aster launch?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+                    <div class="a">We're putting the finishing touches on it. Join the waitlist and you'll be the first to know the moment it's ready on iOS.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Is Aster free?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+                    <div class="a">Aster is free to start, and we'll always keep a meaningful free experience. If we add premium features later, they'll be clearly optional.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Is my data really private?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+                    <div class="a">Yes. We don't sell your data and never will, we don't collect it from third parties, and you can review, export, or delete it anytime. Read the full <a href="/privacypolicy">privacy policy</a>.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Do I need a regular cycle to use Aster?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+                    <div class="a">Not at all. Aster is built for every cycle, whether it runs like clockwork, is irregular, is affected by PCOS, or you're brand new to tracking.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Is Aster a medical or diagnostic tool?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+                    <div class="a">No. Aster offers gentle, everyday guidance and emotional support. It doesn't diagnose conditions or replace professional medical care.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Which devices does Aster support?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+                    <div class="a">Aster is coming to iOS first. Join the waitlist and we'll let you know the moment it lands, and when Android follows.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <!-- ================= FINAL CTA ================= -->
     <section class="block final">
         <div class="wrap">
@@ -819,6 +916,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- ================= FOOTER ================= -->
     <footer class="site">
         <div class="wrap">
@@ -831,8 +930,10 @@
                 <div class="foot-links">
                     <a href="#features">Features</a>
                     <a href="#how">How it works</a>
+                    <a href="#faq">FAQ</a>
                     <a href="#waitlist">Waitlist</a>
                     <a href="/privacypolicy">Privacy Policy</a>
+                    <a href="mailto:buildingaster@gmail.com">Contact</a>
                 </div>
             </div>
             <div class="foot-copy">© 2026 Aster Health, Inc. All rights reserved.</div>
