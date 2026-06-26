@@ -3,7 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aster - Your Personal Wellness Companion</title>
+    <title>Aster — A daily, cycle-aware wellness companion</title>
+    <meta name="description" content="Aster is a daily, cycle-aware wellness companion that turns your hormonal shifts into gentle, personalized guidance. Not another tracker — a coach that helps you feel seen.">
+    <meta name="theme-color" content="#faf6f2">
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aster.fit/">
+    <meta property="og:title" content="Aster — A daily, cycle-aware wellness companion">
+    <meta property="og:description" content="Not another tracker. A coach that helps you feel seen. Cycle-aware wellness for how you actually feel — hormonally, emotionally, and practically.">
+    <meta property="og:image" content="https://aster.fit/android-chrome-512x512.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Aster — A daily, cycle-aware wellness companion">
+    <meta name="twitter:description" content="Not another tracker. A coach that helps you feel seen.">
+
     <link rel="icon" href="/favicon.ico">
     <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
@@ -11,791 +24,872 @@
     <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
     <link rel="apple-touch-icon" href="/appletouch.png" sizes="180x180">
     <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Fonts: Fraunces (editorial serif) + Inter (clean sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            /* Ink / text */
+            --ink: #2c2230;
+            --ink-soft: #6c5f74;
+            --ink-faint: #978aa0;
+
+            /* Surfaces */
+            --cream: #faf6f2;
+            --cream-2: #f4edf3;
+            --panel: #fffdfb;
+            --line: rgba(44, 34, 48, 0.09);
+
+            /* Brand — purple cosmos at sunset */
+            --plum: #6f4d96;
+            --plum-deep: #533a73;
+            --lilac: #b89ad8;
+            --rose: #d98fb1;
+            --peach: #f3b48d;
+            --amber: #f6cf94;
+
+            --sunset: linear-gradient(120deg, #6f4d96 0%, #b06aa3 45%, #e191a4 72%, #f3b48d 100%);
+            --sunset-soft: linear-gradient(135deg, #f3ecf7 0%, #f9eef0 55%, #fdf2e9 100%);
+
+            --shadow-sm: 0 2px 12px rgba(60, 40, 70, 0.06);
+            --shadow-md: 0 18px 50px rgba(80, 50, 90, 0.10);
+            --shadow-lg: 0 40px 90px rgba(80, 50, 90, 0.16);
+
+            --radius: 22px;
+            --maxw: 1120px;
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #fafafa;
-            color: #1a1a1a;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 3rem 1.5rem;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #f8f4ff 0%, #f0f9ff 50%, #f0fff4 100%);
+        h1, h2, h3, .serif {
+            font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            line-height: 1.12;
+            color: var(--ink);
         }
 
+        em { font-style: italic; }
+
+        a { color: inherit; }
+
+        .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--plum);
+        }
+        .eyebrow::before {
+            content: '';
+            width: 22px; height: 1.5px;
+            background: var(--plum);
+            opacity: 0.5;
+        }
+
+        /* ---------- Buttons ---------- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+            white-space: nowrap;
+        }
+        .btn-primary {
+            padding: 0.95rem 1.9rem;
+            color: #fff;
+            background: var(--plum);
+            box-shadow: 0 10px 24px rgba(111, 77, 150, 0.28);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px rgba(111, 77, 150, 0.34);
+            background: var(--plum-deep);
+        }
+        .btn-ghost {
+            padding: 0.7rem 1.25rem;
+            color: var(--plum);
+            background: transparent;
+            border: 1px solid rgba(111, 77, 150, 0.28);
+        }
+        .btn-ghost:hover { background: rgba(111, 77, 150, 0.06); }
+
+        /* ---------- Nav ---------- */
+        header.nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(250, 246, 242, 0.78);
+            backdrop-filter: saturate(160%) blur(12px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+        header.nav.scrolled { border-color: var(--line); }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .brand { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+        .brand .mark { width: 30px; height: 30px; display: block; }
+        .brand .name {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 1.4rem;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
+        .nav-links a.link {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--ink-soft);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .nav-links a.link:hover { color: var(--plum); }
+        @media (max-width: 760px) {
+            .nav-links .link { display: none; }
+        }
+
+        /* ---------- Hero ---------- */
+        .hero { position: relative; padding: clamp(3rem, 7vw, 6rem) 0 clamp(3.5rem, 8vw, 7rem); overflow: hidden; }
         .hero::before {
             content: '';
             position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
-            top: -300px;
-            right: -200px;
-            animation: float 8s ease-in-out infinite;
+            width: 720px; height: 720px;
+            top: -340px; right: -220px;
+            background: radial-gradient(circle, rgba(214, 143, 177, 0.20) 0%, transparent 68%);
             border-radius: 50%;
+            pointer-events: none;
+            animation: drift 16s ease-in-out infinite;
         }
-
         .hero::after {
             content: '';
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(129, 199, 132, 0.08) 0%, transparent 70%);
-            bottom: -250px;
-            left: -150px;
-            animation: float 10s ease-in-out infinite reverse;
+            width: 560px; height: 560px;
+            bottom: -300px; left: -200px;
+            background: radial-gradient(circle, rgba(184, 154, 216, 0.18) 0%, transparent 68%);
             border-radius: 50%;
+            pointer-events: none;
+            animation: drift 20s ease-in-out infinite reverse;
         }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(5deg); }
-            66% { transform: translate(-20px, 20px) rotate(-5deg); }
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(28px, 26px); }
         }
-
-        .hero-content {
-            max-width: 800px;
+        .hero-grid {
+            position: relative;
             z-index: 1;
-            width: 100%;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 10vw, 5rem);
-            font-weight: 800;
-            background: linear-gradient(135deg, #8b5cf6 0%, #10b981 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-
-        .tagline {
-            font-size: clamp(1.1rem, 3vw, 1.5rem);
-            color: #4b5563;
-            margin-bottom: 2.5rem;
-            animation: fadeInUp 0.8s ease 0.2s backwards;
-            line-height: 1.6;
-            padding: 0 1rem;
-            font-weight: 500;
-        }
-
-        .cta-section {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: clamp(2rem, 5vw, 4rem);
             align-items: center;
-            margin-top: 2.5rem;
-            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+        .hero h1 {
+            font-size: clamp(2.6rem, 6.2vw, 4.4rem);
+            margin: 1.4rem 0 1.3rem;
+        }
+        .hero h1 em { color: var(--plum); }
+        .hero .lede {
+            font-size: clamp(1.08rem, 1.6vw, 1.22rem);
+            color: var(--ink-soft);
+            max-width: 30rem;
+            margin-bottom: 2rem;
         }
 
-        .waitlist-section {
-            margin-top: 3rem;
-            animation: fadeInUp 0.8s ease 0.6s backwards;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0 1rem;
-        }
-
-        .waitlist-text {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            color: #6b7280;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
+        /* Waitlist form */
+        .waitlist { max-width: 30rem; }
         .waitlist-form {
             display: flex;
-            gap: 0.75rem;
-            width: 100%;
-            background: white;
-            padding: 0.5rem;
-            border-radius: 60px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        .email-input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            font-size: 1rem;
-            border: none;
+            gap: 0.5rem;
+            background: var(--panel);
+            padding: 0.45rem;
             border-radius: 50px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--line);
+        }
+        .waitlist-input {
+            flex: 1;
+            min-width: 0;
+            border: none;
             outline: none;
             background: transparent;
-            min-width: 0;
-        }
-
-        .email-input::placeholder {
-            color: #9ca3af;
-        }
-
-        .waitlist-button {
-            padding: 1rem 2rem;
+            padding: 0.7rem 1.1rem;
             font-size: 1rem;
-            border: none;
-            border-radius: 50px;
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+            font-family: 'Inter', sans-serif;
+            color: var(--ink);
         }
-
-        .waitlist-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+        .waitlist-input::placeholder { color: var(--ink-faint); }
+        .waitlist-note {
+            margin-top: 0.85rem;
+            font-size: 0.85rem;
+            color: var(--ink-faint);
+            padding-left: 0.4rem;
         }
-
-        .cta-button {
-            padding: 1.25rem 3rem;
-            font-size: clamp(1.05rem, 2.5vw, 1.15rem);
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-            color: white;
-            box-shadow: 0 10px 35px rgba(139, 92, 246, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 45px rgba(139, 92, 246, 0.4);
-        }
-
-        .features {
-            padding: 5rem 1.5rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: clamp(2rem, 6vw, 3rem);
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-            padding: 0 1rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: clamp(1rem, 3vw, 1.25rem);
-            color: #6b7280;
-            margin-bottom: 4rem;
-            padding: 0 1rem;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .feature-card {
-            background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
-            padding: 2.5rem;
-            border-radius: 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.04);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-            border-color: rgba(139, 92, 246, 0.2);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-            border-radius: 16px;
-            display: flex;
+        .waitlist-success {
+            display: none;
             align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .feature-title {
-            font-size: clamp(1.35rem, 3vw, 1.6rem);
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-        }
-
-        .feature-description {
-            color: #6b7280;
-            line-height: 1.7;
-            font-size: 1rem;
-        }
-
-        .consolidation {
-            padding: 5rem 1.5rem;
-            background: linear-gradient(135deg, #fafafa 0%, #f9fafb 100%);
-        }
-
-        .consolidation-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .consolidation-content h2 {
-            font-size: clamp(2rem, 6vw, 3rem);
-            color: #1a1a1a;
-            margin-bottom: 1rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-
-        .consolidation-subtitle {
-            font-size: clamp(1rem, 3vw, 1.25rem);
-            color: #6b7280;
-            margin-bottom: 4rem;
-            padding: 0 1rem;
-        }
-
-        .app-comparison {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-            align-items: start;
-        }
-
-        .old-way, .new-way {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 24px;
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-
-        .old-way {
-            border-left: 4px solid #ef4444;
-        }
-
-        .new-way {
-            border-left: 4px solid #8b5cf6;
-            position: relative;
-            overflow: visible;
-        }
-
-        .new-way::before {
-            content: '⭐ BEST VALUE';
-            position: absolute;
-            top: 20px;
-            right: -12px;
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-            color: white;
-            padding: 8px 16px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
-        }
-
-        .old-way h3, .new-way h3 {
-            font-size: clamp(1.4rem, 3vw, 1.75rem);
-            margin-bottom: 2rem;
-            font-weight: 700;
-        }
-
-        .app-list {
-            margin-bottom: 2rem;
-        }
-
-        .app-item {
-            padding: 1rem 1.25rem;
-            margin: 0.75rem 0;
-            background: #fef2f2;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            color: #dc2626;
+            gap: 0.6rem;
+            background: rgba(111, 77, 150, 0.07);
+            border: 1px solid rgba(111, 77, 150, 0.18);
+            color: var(--plum-deep);
             font-weight: 500;
-            border-left: 3px solid #ef4444;
+            padding: 1rem 1.3rem;
+            border-radius: 18px;
+        }
+        .waitlist.done .waitlist-form,
+        .waitlist.done .waitlist-note { display: none; }
+        .waitlist.done .waitlist-success { display: flex; }
+
+        @media (max-width: 480px) {
+            .waitlist-form { flex-direction: column; border-radius: 22px; padding: 0.6rem; }
+            .waitlist-form .btn { width: 100%; }
         }
 
-        .aster-all-in-one {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 0.75rem;
-            margin-bottom: 2rem;
-        }
-
-        .aster-feature {
-            padding: 1rem 0.75rem;
-            background: linear-gradient(135deg, #f5f3ff, #faf5ff);
-            border-radius: 12px;
-            font-size: 0.9rem;
-            color: #7c3aed;
-            font-weight: 600;
-            text-align: center;
-            border: 1px solid rgba(139, 92, 246, 0.1);
-        }
-
-        .total {
-            font-size: 1.05rem;
-            color: #dc2626;
-            font-weight: 700;
-            padding: 1.25rem;
-            background: #fef2f2;
-            border-radius: 12px;
-            border-left: 3px solid #ef4444;
-        }
-
-        .total-aster {
-            font-size: 1.15rem;
-            color: #7c3aed;
-            font-weight: 700;
-            padding: 1.25rem;
-            background: linear-gradient(135deg, #f5f3ff, #faf5ff);
-            border-radius: 12px;
-            border-left: 3px solid #8b5cf6;
-        }
-
-        .consolidation-highlight {
-            max-width: 900px;
-            margin: 3rem auto 0;
-            padding: 2rem;
-            background: linear-gradient(135deg, #f5f3ff, #faf5ff);
-            border-radius: 20px;
-            border-left: 4px solid #8b5cf6;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-        }
-
-        .consolidation-highlight p {
-            font-size: clamp(1rem, 2.5vw, 1.15rem);
-            color: #4b5563;
-            line-height: 1.8;
-            font-weight: 500;
-        }
-
-        .unique-value {
-            background: linear-gradient(135deg, #8b5cf6 0%, #10b981 100%);
-            padding: 5rem 1.5rem;
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .unique-value::before {
+        /* ---------- Phone mockup (Daily Rhythm Card) ---------- */
+        .phone-stage { display: flex; justify-content: center; position: relative; }
+        .phone-stage::before {
             content: '';
             position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            top: -200px;
-            right: -100px;
+            inset: -6% -2%;
+            background: var(--sunset);
+            filter: blur(60px);
+            opacity: 0.20;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .phone {
+            position: relative;
+            z-index: 1;
+            width: 290px;
+            background: #fff;
+            border-radius: 42px;
+            padding: 14px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(44,34,48,0.06);
+        }
+        .phone-screen {
+            background: var(--sunset-soft);
+            border-radius: 30px;
+            padding: 1.4rem 1.2rem 1.5rem;
+            overflow: hidden;
+        }
+        .phone-top {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 1.1rem;
+        }
+        .phone-top .greet { font-size: 0.8rem; color: var(--ink-soft); }
+        .phone-top .greet strong { display:block; font-size: 1.02rem; color: var(--ink); font-weight: 600; }
+        .phase-chip {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--plum-deep);
+            background: rgba(111,77,150,0.10);
+            padding: 0.32rem 0.6rem;
+            border-radius: 30px;
+            white-space: nowrap;
+        }
+        .rhythm-card {
+            background: #fff;
+            border-radius: 22px;
+            padding: 1.15rem 1.1rem 1.25rem;
+            box-shadow: 0 12px 30px rgba(80,50,90,0.10);
+        }
+        .rhythm-card .rc-label {
+            font-size: 0.66rem; font-weight: 700; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--plum);
+        }
+        .rhythm-card h4 {
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+            font-size: 1.18rem;
+            margin: 0.35rem 0 0.9rem;
+            line-height: 1.25;
+            color: var(--ink);
+        }
+        .rc-row { display: flex; gap: 0.65rem; align-items: flex-start; margin: 0.7rem 0; }
+        .rc-row .ic {
+            flex: none; width: 26px; height: 26px; border-radius: 9px;
+            display: grid; place-items: center;
+            background: var(--cream-2); color: var(--plum);
+        }
+        .rc-row .ic svg { width: 15px; height: 15px; }
+        .rc-row .t { font-size: 0.83rem; color: var(--ink-soft); line-height: 1.45; }
+        .rc-row .t b { color: var(--ink); font-weight: 600; }
+        .rc-foot {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-top: 1rem; padding-top: 0.85rem; border-top: 1px solid var(--line);
+        }
+        .rc-foot .save { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.76rem; color: var(--plum); font-weight: 600; }
+        .rc-foot .save svg { width: 15px; height: 15px; }
+        .rc-foot .helpful { font-size: 0.72rem; color: var(--ink-faint); }
+
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero-copy { text-align: center; }
+            .hero .eyebrow { justify-content: center; }
+            .hero .lede, .waitlist { margin-left: auto; margin-right: auto; }
+            .phone-stage { margin-top: 1rem; order: 2; }
+        }
+
+        /* ---------- Section scaffolding ---------- */
+        section.block { padding: clamp(3.5rem, 8vw, 6.5rem) 0; }
+        .section-head { max-width: 46rem; margin: 0 auto 3.2rem; text-align: center; }
+        .section-head.left { margin-left: 0; text-align: left; }
+        .section-head h2 { font-size: clamp(2rem, 4.5vw, 3rem); margin: 1rem 0 0.9rem; }
+        .section-head p { font-size: clamp(1.02rem, 1.5vw, 1.18rem); color: var(--ink-soft); }
+
+        /* ---------- "Not a tracker" statement ---------- */
+        .statement { background: var(--cream-2); }
+        .statement .wrap { max-width: 60rem; text-align: center; }
+        .statement .lead {
+            font-family: 'Fraunces', serif;
+            font-weight: 400;
+            font-size: clamp(1.6rem, 3.6vw, 2.5rem);
+            line-height: 1.28;
+            color: var(--ink);
+        }
+        .statement .lead .muted { color: var(--ink-faint); }
+        .statement .quote {
+            margin: 2.2rem auto 0;
+            max-width: 38rem;
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+            color: var(--plum-deep);
+        }
+        .statement .quote span { display: block; margin-top: 0.7rem; font-family: 'Inter', sans-serif; font-style: normal; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+
+        /* ---------- Features ---------- */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: 1.5rem;
+        }
+        .f-card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 2rem 1.85rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+        .f-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(111,77,150,0.18); }
+        .f-icon {
+            width: 52px; height: 52px;
+            border-radius: 15px;
+            display: grid; place-items: center;
+            background: var(--sunset-soft);
+            color: var(--plum);
+            margin-bottom: 1.25rem;
+        }
+        .f-icon svg { width: 24px; height: 24px; }
+        .f-card h3 { font-size: 1.4rem; margin-bottom: 0.6rem; }
+        .f-card p { color: var(--ink-soft); font-size: 0.98rem; }
+
+        /* Secondary mini-features */
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+        .mini {
+            display: flex; gap: 0.9rem; align-items: flex-start;
+            background: transparent;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 1.3rem 1.4rem;
+        }
+        .mini .ic { flex: none; width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--cream-2); color: var(--plum); }
+        .mini .ic svg { width: 19px; height: 19px; }
+        .mini h4 { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; }
+        .mini p { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5; }
+
+        /* ---------- How it works ---------- */
+        .how { background: var(--cream-2); }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: 1.5rem;
+            counter-reset: step;
+        }
+        .step {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 2rem 1.85rem;
+            position: relative;
+        }
+        .step .num {
+            counter-increment: step;
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            display: grid; place-items: center;
+            background: var(--plum);
+            margin-bottom: 1.1rem;
+        }
+        .step .num::before { content: counter(step); }
+        .step h3 { font-size: 1.3rem; margin-bottom: 0.55rem; }
+        .step p { color: var(--ink-soft); font-size: 0.96rem; }
+
+        /* ---------- Difference (vs tracking) ---------- */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 60rem;
+            margin: 0 auto;
+        }
+        .compare {
+            border-radius: var(--radius);
+            padding: 2rem 1.9rem;
+        }
+        .compare.plain { background: var(--panel); border: 1px solid var(--line); }
+        .compare.aster { background: var(--sunset-soft); border: 1px solid rgba(111,77,150,0.18); }
+        .compare h3 { font-size: 1.3rem; margin-bottom: 1.3rem; }
+        .compare.plain h3 { color: var(--ink-soft); }
+        .compare.aster h3 { color: var(--plum-deep); }
+        .compare ul { list-style: none; }
+        .compare li { display: flex; gap: 0.7rem; align-items: flex-start; padding: 0.6rem 0; font-size: 0.97rem; color: var(--ink-soft); }
+        .compare li svg { flex: none; width: 19px; height: 19px; margin-top: 2px; }
+        .compare.plain li svg { color: var(--ink-faint); }
+        .compare.aster li { color: var(--ink); }
+        .compare.aster li svg { color: var(--plum); }
+        @media (max-width: 700px) { .compare-grid { grid-template-columns: 1fr; } }
+
+        /* ---------- Personas ---------- */
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: 1.5rem;
+        }
+        .persona {
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 1.9rem 1.75rem;
+            background: var(--panel);
+        }
+        .persona .tag { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--plum); }
+        .persona h3 { font-size: 1.28rem; margin: 0.5rem 0 0.55rem; }
+        .persona p { color: var(--ink-soft); font-size: 0.96rem; }
+
+        /* ---------- Final CTA ---------- */
+        .final {
+            background: var(--sunset);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .final::before {
+            content: '';
+            position: absolute;
+            width: 500px; height: 500px;
+            top: -250px; left: 50%; transform: translateX(-50%);
+            background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 70%);
             border-radius: 50%;
         }
+        .final .wrap { position: relative; z-index: 1; max-width: 42rem; }
+        .final h2 { color: #fff; font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+        .final p.sub { color: rgba(255,255,255,0.92); font-size: clamp(1.05rem, 2vw, 1.2rem); margin-bottom: 2.2rem; }
+        .final .waitlist { margin: 0 auto; }
+        .final .waitlist-form { box-shadow: 0 14px 40px rgba(60,30,70,0.25); border-color: transparent; }
+        .final .waitlist-note { color: rgba(255,255,255,0.85); }
+        .final .waitlist-success { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.3); color: #fff; }
 
-        .unique-value h2 {
-            font-size: clamp(2rem, 6vw, 3rem);
-            margin-bottom: 3rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            position: relative;
-            z-index: 1;
+        /* ---------- Footer ---------- */
+        footer.site {
+            background: var(--cream);
+            padding: 3rem 0 2.5rem;
+            border-top: 1px solid var(--line);
         }
-
-        .value-points {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
+        .foot-inner {
+            display: flex; flex-wrap: wrap; gap: 1.5rem;
+            align-items: center; justify-content: space-between;
         }
+        .foot-brand { display: flex; align-items: center; gap: 0.6rem; }
+        .foot-brand .mark { width: 26px; height: 26px; }
+        .foot-brand .name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.2rem; }
+        .foot-brand .tagline { color: var(--ink-faint); font-size: 0.9rem; margin-left: 0.4rem; }
+        .foot-links { display: flex; gap: 1.6rem; align-items: center; }
+        .foot-links a { color: var(--ink-soft); text-decoration: none; font-size: 0.92rem; transition: color 0.2s; }
+        .foot-links a:hover { color: var(--plum); }
+        .foot-copy { width: 100%; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--ink-faint); font-size: 0.85rem; }
 
-        .value-point {
-            padding: 2.5rem;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
+        /* ---------- Reveal animation ---------- */
+        .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.is-visible { opacity: 1; transform: none; }
 
-        .value-point:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .value-point h3 {
-            font-size: clamp(1.35rem, 3vw, 1.6rem);
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .value-point p {
-            font-size: 1rem;
-            line-height: 1.7;
-            opacity: 0.95;
-        }
-
-        .demo-section {
-            padding: 5rem 1.5rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
-            background: white;
-        }
-
-        .demo-subtitle {
-            font-size: clamp(1rem, 3vw, 1.25rem);
-            color: #6b7280;
-            margin-bottom: 4rem;
-            padding: 0 1rem;
-        }
-
-        .demo-grid {
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            gap: 2rem;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .demo-card {
-            flex: 1 1 260px;
-            min-width: 260px;
-            max-width: 280px;
-            background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
-            padding: 2.5rem 2rem;
-            border-radius: 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .demo-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-            border-color: rgba(139, 92, 246, 0.2);
-        }
-
-        .demo-card h4 {
-            font-size: clamp(1.2rem, 3vw, 1.4rem);
-            color: #8b5cf6;
-            margin-bottom: 0.75rem;
-            font-weight: 700;
-        }
-
-        .demo-card p {
-            font-size: 1rem;
-            color: #6b7280;
-            line-height: 1.6;
-        }
-
-        .final-cta {
-            padding: 5rem 1.5rem;
-            text-align: center;
-            background: linear-gradient(135deg, #f8f4ff 0%, #f0f9ff 100%);
-        }
-
-        .final-cta h2 {
-            font-size: clamp(2rem, 6vw, 3rem);
-            margin-bottom: 1.5rem;
-            color: #1a1a1a;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-
-        .final-cta p {
-            font-size: clamp(1.05rem, 3vw, 1.25rem);
-            color: #6b7280;
-            margin-bottom: 2.5rem;
-            padding: 0 1rem;
-            font-weight: 500;
-        }
-
-        .final-cta .cta-button {
-            font-size: clamp(1.05rem, 3vw, 1.2rem);
-            padding: 1.35rem 3.5rem;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .demo-grid {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .demo-card {
-                max-width: 100%;
-                min-width: 100%;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .waitlist-form {
-                flex-direction: column;
-                padding: 0.75rem;
-                gap: 0.5rem;
-            }
-
-            .waitlist-button {
-                width: 100%;
-            }
-
-            .aster-all-in-one {
-                grid-template-columns: 1fr;
-            }
-
-            .app-comparison {
-                gap: 2rem;
-            }
-
-            .new-way::before {
-                top: 10px;
-                right: 10px;
-                transform: none;
-            }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .hero::before, .hero::after { animation: none; }
         }
     </style>
 </head>
 <body>
+
+    <!-- ================= NAV ================= -->
+    <header class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#top" class="brand" aria-label="Aster home">
+                <svg class="mark" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M11.7037 78.9999H16.0926C20.4171 79.0087 24.683 78.0003 28.5459 76.0561C32.4087 74.112 35.7602 71.2867 38.3296 67.8083L39.5 66.2429L40.6704 67.8083C43.2398 71.2867 46.5913 74.112 50.4541 76.0561C54.317 78.0003 58.5829 79.0087 62.9074 78.9999H67.2963C70.4003 78.9999 73.3771 77.7669 75.572 75.572C77.7669 73.3771 78.9999 70.4003 78.9999 67.2963V62.9074C79.0087 58.5829 78.0003 54.317 76.0561 50.4541C74.112 46.5913 71.2867 43.2398 67.8083 40.6704L66.2429 39.5L67.8083 38.3296C71.2867 35.7602 74.112 32.4087 76.0561 28.5459C78.0003 24.683 79.0087 20.4171 78.9999 16.0926V11.7037C78.9999 8.59973 77.7669 5.62285 75.572 3.42799C73.3771 1.23312 70.4003 5.63e-05 67.2963 5.63e-05H62.9074C58.5829 -0.00868 54.317 0.99973 50.4541 2.94386C46.5913 4.88799 43.2398 7.71333 40.6704 11.1917L39.5 12.7571L38.3296 11.1917C35.7602 7.71333 32.4087 4.88799 28.5459 2.94386C24.683 0.99973 20.4171 -0.00868 16.0926 5.63e-05H11.7037C8.59973 5.63e-05 5.62285 1.23312 3.42799 3.42799C1.23312 5.62285 5.63e-05 8.59973 5.63e-05 11.7037V16.0926C-0.00868 20.4171 0.99973 24.683 2.94386 28.5459C4.88799 32.4087 7.71333 35.7602 11.1917 38.3296L12.7571 39.5L11.1917 40.6704C7.71333 43.2398 4.88799 46.5913 2.94386 50.4541C0.99973 54.317 -0.00868 58.5829 5.63e-05 62.9074V67.2963C5.63e-05 70.4003 1.23312 73.3771 3.42799 75.572C5.62285 77.7669 8.59973 78.9999 11.7037 78.9999ZM43.8889 27.7963C43.8889 22.7523 45.8926 17.9149 49.4593 14.3482C53.0259 10.7816 57.8634 8.77782 62.9074 8.77782H67.2963C68.0723 8.77782 68.8165 9.08609 69.3652 9.6348C69.9139 10.1835 70.2222 10.9277 70.2222 11.7037V16.0926C70.2222 21.1366 68.2185 25.9741 64.6518 29.5407C61.0851 33.1074 56.2477 35.1111 51.2037 35.1111H43.8889V27.7963ZM43.8889 43.8889H51.2037C56.2477 43.8889 61.0851 45.8926 64.6518 49.4593C68.2185 53.0259 70.2222 57.8634 70.2222 62.9074V67.2963C70.2222 68.0723 69.9139 68.8165 69.3652 69.3652C68.8165 69.9139 68.0723 70.2222 67.2963 70.2222H62.9074C57.8634 70.2222 53.0259 68.2185 49.4593 64.6518C45.8926 61.0851 43.8889 56.2477 43.8889 51.2037V43.8889ZM8.77782 16.0926V11.7037C8.77782 10.9277 9.08609 10.1835 9.6348 9.6348C10.1835 9.08609 10.9277 8.77782 11.7037 8.77782H16.0926C21.1366 8.77782 25.9741 10.7816 29.5407 14.3482C33.1074 17.9149 35.1111 22.7523 35.1111 27.7963V35.1111H27.7963C22.7523 35.1111 17.9149 33.1074 14.3482 29.5407C10.7816 25.9741 8.77782 21.1366 8.77782 16.0926ZM8.77782 62.9074C8.77782 57.8634 10.7816 53.0259 14.3482 49.4593C17.9149 45.8926 22.7523 43.8889 27.7963 43.8889H35.1111V51.2037C35.1111 56.2477 33.1074 61.0851 29.5407 64.6518C25.9741 68.2185 21.1366 70.2222 16.0926 70.2222H11.7037C10.9277 70.2222 10.1835 69.9139 9.6348 69.3652C9.08609 68.8165 8.77782 68.0723 8.77782 67.2963V62.9074Z" fill="#6f4d96"/>
+                </svg>
+                <span class="name">Aster</span>
+            </a>
+            <nav class="nav-links">
+                <a class="link" href="#features">Features</a>
+                <a class="link" href="#how">How it works</a>
+                <a class="link" href="#who">Who it's for</a>
+                <a class="btn btn-ghost" href="#waitlist">Join the waitlist</a>
+            </nav>
+        </div>
+    </header>
+
+    <a id="top"></a>
+
+    <!-- ================= HERO ================= -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Your Body Speaks.<br>We Listen.</h1>
-            <p class="tagline">The only wellness app that truly understands your unique hormonal patterns</p>
-            
-            <div class="cta-section">
-                <a href="#" class="cta-button">Download Aster</a>
+        <div class="wrap hero-grid">
+            <div class="hero-copy">
+                <span class="eyebrow">Cycle-aware wellness</span>
+                <h1>Your body has a rhythm.<br><em>Aster helps you feel it.</em></h1>
+                <p class="lede">A daily, cycle-aware wellness companion that turns your hormonal shifts into gentle, personalized guidance. Not another tracker — a coach that helps you feel seen.</p>
+
+                <div class="waitlist" id="waitlist">
+                    <form class="waitlist-form" novalidate>
+                        <input type="email" class="waitlist-input" placeholder="you@email.com" aria-label="Email address" required>
+                        <button type="submit" class="btn btn-primary">Join the waitlist</button>
+                    </form>
+                    <p class="waitlist-note">Coming soon to iOS · Free to start · No spam, ever.</p>
+                    <div class="waitlist-success" role="status">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        You're on the list. We'll be in touch soon. 🌸
+                    </div>
+                </div>
             </div>
-            
-            <div class="waitlist-section">
-                <p class="waitlist-text">Join the Waitlist</p>
-                <form class="waitlist-form" onsubmit="handleWaitlistSubmit(event)">
-                    <input type="email" placeholder="Enter your email" class="email-input" required>
-                    <button type="submit" class="waitlist-button">Join</button>
+
+            <!-- Phone mockup -->
+            <div class="phone-stage" aria-hidden="true">
+                <div class="phone">
+                    <div class="phone-screen">
+                        <div class="phone-top">
+                            <div class="greet">Good morning,<strong>Maya</strong></div>
+                            <span class="phase-chip">Luteal · Day 24</span>
+                        </div>
+                        <div class="rhythm-card">
+                            <span class="rc-label">Today's rhythm</span>
+                            <h4>A slower day. Be gentle with your energy.</h4>
+
+                            <div class="rc-row">
+                                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Z"/><circle cx="12" cy="9" r="2.2"/></svg></span>
+                                <span class="t"><b>Eat:</b> Magnesium-rich foods — dark chocolate, pumpkin seeds, leafy greens.</span>
+                            </div>
+                            <div class="rc-row">
+                                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12l1-8.5Z"/></svg></span>
+                                <span class="t"><b>Energy:</b> Pace yourself — favor focused, quiet tasks over big pushes.</span>
+                            </div>
+                            <div class="rc-row">
+                                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span>
+                                <span class="t"><b>Rest:</b> An extra 30 minutes of sleep tonight will go a long way.</span>
+                            </div>
+                            <div class="rc-row">
+                                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.3 2 5 5.2 5c2 0 3.3 1.2 4 2.3.7-1.1 2-2.3 4-2.3C16.4 5 18 8.3 16.4 11.7 14 16.4 12 21 12 21Z"/></svg></span>
+                                <span class="t"><b>For you:</b> Feeling foggy isn't failing. Your body's just asking for softness today.</span>
+                            </div>
+
+                            <div class="rc-foot">
+                                <span class="save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z"/></svg>Save card</span>
+                                <span class="helpful">Was this helpful?</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= STATEMENT ================= -->
+    <section class="block statement">
+        <div class="wrap reveal">
+            <p class="lead">Most apps stop at logging. <span class="muted">You're left Googling why you feel off, drowning in generic tips that were never really about you.</span></p>
+            <p class="quote">
+                "I don't want to feed an app my data. I want to feel seen."
+                <span>— the gap Aster was built to close</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+    <section class="block" id="features">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">What's inside</span>
+                <h2>Guidance that adapts to how you feel</h2>
+                <p>Hormonally, emotionally, and practically — Aster meets you where you are each day.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="f-card reveal">
+                    <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/><path d="M12 13.5c1.2-1.4 3.5-.6 3.5 1.1 0 1.5-3.5 3.4-3.5 3.4s-3.5-1.9-3.5-3.4c0-1.7 2.3-2.5 3.5-1.1Z"/></svg></div>
+                    <h3>The Daily Rhythm Card</h3>
+                    <p>One card a day, tuned to your phase and your mood: what to eat, how to pace your energy, when to rest, and a gentle note of self-compassion. One anchor — no endless scroll.</p>
+                </div>
+
+                <div class="f-card reveal">
+                    <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg></div>
+                    <h3>A coach that learns you</h3>
+                    <p>Aster notices your patterns over time. "You tend to feel low around day 24 — here's what's helped others like you." The more you check in, the more it understands your rhythm.</p>
+                </div>
+
+                <div class="f-card reveal">
+                    <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.2 7.6L3 21l1.9-5.8A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg></div>
+                    <h3>Warm, always-there support</h3>
+                    <p>Ask Aster anything, day or night. It won't diagnose or scare you — it gently shares what's helped women in your shoes. Real comfort for the 2am questions.</p>
+                </div>
+
+                <div class="f-card reveal">
+                    <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/><circle cx="8" cy="13.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="12" cy="13.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="16" cy="17" r="1.3" fill="currentColor" stroke="none"/></svg></div>
+                    <h3>Your month as a moodscape</h3>
+                    <p>Not just bleeding days. See your moods, energy, and patterns laid out as a living map — so the shifts finally make sense, and nothing catches you off guard.</p>
+                </div>
+            </div>
+
+            <!-- Secondary -->
+            <div class="mini-grid">
+                <div class="mini reveal">
+                    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9Z"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
+                    <div><h4>Cycle-aware nudges</h4><p>"Today's a good day to cancel a plan, guilt-free." Small permissions, right when you need them.</p></div>
+                </div>
+                <div class="mini reveal">
+                    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c4-2 7-5 7-9a7 7 0 0 0-7-4 7 7 0 0 0-7 4c0 4 3 7 7 9Z"/><path d="M12 8v13"/></svg></span>
+                    <div><h4>Mood Garden</h4><p>Grow a garden from your daily check-ins, and watch your self-awareness bloom over time.</p></div>
+                </div>
+                <div class="mini reveal">
+                    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z"/></svg></span>
+                    <div><h4>Build your rhythm map</h4><p>Save the cards that helped. Over time they become a survival guide that's truly yours.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= HOW IT WORKS ================= -->
+    <section class="block how" id="how">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">Effortlessly simple</span>
+                <h2>Three taps, not a logging marathon</h2>
+                <p>Aster is built to feel lightweight — never clinical, never overwhelming.</p>
+            </div>
+            <div class="steps">
+                <div class="step reveal">
+                    <div class="num"></div>
+                    <h3>Check in</h3>
+                    <p>A 10-second mood check. Tap how you feel today — "foggy," "low drive," "wired." No forms, no medical jargon.</p>
+                </div>
+                <div class="step reveal">
+                    <div class="num"></div>
+                    <h3>Get your card</h3>
+                    <p>Aster reads your phase and your mood, then hands you one personalized rhythm card for the day.</p>
+                </div>
+                <div class="step reveal">
+                    <div class="num"></div>
+                    <h3>Save what helps</h3>
+                    <p>Heart the cards that land. Aster learns from your feedback, and your guidance gets sharper every cycle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= DIFFERENCE ================= -->
+    <section class="block">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">Why Aster is different</span>
+                <h2>Tracking tells you <em>what</em>.<br>Aster tells you what to do about it.</h2>
+            </div>
+            <div class="compare-grid">
+                <div class="compare plain reveal">
+                    <h3>Typical cycle trackers</h3>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Log symptoms and dates, then stop</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>The same generic tips for everyone</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>You're left to interpret the data</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Feels clinical and ad-heavy</li>
+                    </ul>
+                </div>
+                <div class="compare aster reveal">
+                    <h3>The Aster way</h3>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Daily micro-coaching you can act on</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Personalized to your phase, mood & goals</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Learns your rhythm and closes the loop</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Feels like a friend who genuinely gets it</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= WHO IT'S FOR ================= -->
+    <section class="block how" id="who">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">Made for you</span>
+                <h2>Wherever you are with your cycle</h2>
+                <p>Aster meets you where you are — whether your cycle runs like clockwork or keeps you guessing.</p>
+            </div>
+            <div class="persona-grid">
+                <div class="persona reveal">
+                    <span class="tag">Regular cycles</span>
+                    <h3>Optimize & sync</h3>
+                    <p>Line up your food, workouts, and mood with your phase — and feel your best all month long.</p>
+                </div>
+                <div class="persona reveal">
+                    <span class="tag">Irregular or PCOS</span>
+                    <h3>Make sense of it</h3>
+                    <p>Find clarity and calm in unpredictable cycles, with a judgment-free guide that helps you feel understood.</p>
+                </div>
+                <div class="persona reveal">
+                    <span class="tag">New to tracking</span>
+                    <h3>Start gently</h3>
+                    <p>No clutter, no overwhelm. Just warm, one-step guidance that shows you what's happening — from day one.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FINAL CTA ================= -->
+    <section class="block final">
+        <div class="wrap">
+            <h2 class="reveal">Be first to feel the difference</h2>
+            <p class="sub reveal">Join the waitlist and we'll let you know the moment Aster opens up.</p>
+            <div class="waitlist reveal">
+                <form class="waitlist-form" novalidate>
+                    <input type="email" class="waitlist-input" placeholder="you@email.com" aria-label="Email address" required>
+                    <button type="submit" class="btn btn-primary">Join the waitlist</button>
                 </form>
-            </div>
-        </div>
-    </section>
-
-    <section id="features" class="features">
-        <h2 class="section-title">Everything You Need, Nothing You Don't</h2>
-        <p class="section-subtitle">Four powerful features working together for complete wellness understanding</p>
-        
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🌸</div>
-                <h3 class="feature-title">Cycle Intelligence</h3>
-                <p class="feature-description">Know what's coming before your body tells you. Track patterns, predict symptoms, and plan your life around your natural rhythm.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">📸</div>
-                <h3 class="feature-title">Snap & Track Nutrition</h3>
-                <p class="feature-description">Take a photo of your meal. That's it. Our AI analyzes everything—calories, macros, and how it affects your hormones.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">💡</div>
-                <h3 class="feature-title">Smart Insights</h3>
-                <p class="feature-description">See the connections between your sleep, energy, mood, and cycle. Understand your body's story in real-time.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">💬</div>
-                <h3 class="feature-title">Your Wellness Buddy</h3>
-                <p class="feature-description">Ask anything. From "When's my next period?" to "Why am I so tired?"—get instant, personalized answers 24/7.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="consolidation">
-        <div class="consolidation-content">
-            <h2>Stop Juggling Apps. Start Living.</h2>
-            <p class="consolidation-subtitle">Replace your entire wellness stack with one intelligent app</p>
-            
-            <div class="app-comparison">
-                <div class="old-way">
-                    <h3>❌ The Old Way</h3>
-                    <div class="app-list">
-                        <div class="app-item">📅 Period tracker - $4.99/mo</div>
-                        <div class="app-item">🍎 Calorie counter - $9.99/mo</div>
-                        <div class="app-item">💪 Fitness tracker - $12.99/mo</div>
-                        <div class="app-item">😴 Sleep monitor - $6.99/mo</div>
-                        <div class="app-item">📝 Mood journal - $3.99/mo</div>
-                    </div>
-                    <div class="total">Total: $38.95/month + mental overload</div>
-                </div>
-                
-                <div class="new-way">
-                    <h3>✨ The Aster Way</h3>
-                    <div class="aster-all-in-one">
-                        <div class="aster-feature">🌸 Cycle tracking</div>
-                        <div class="aster-feature">📸 Nutrition analysis</div>
-                        <div class="aster-feature">💡 Energy & mood insights</div>
-                        <div class="aster-feature">💬 AI wellness coach</div>
-                        <div class="aster-feature">🎯 Personalized recommendations</div>
-                    </div>
-                    <div class="total-aster">One app. Complete picture.</div>
+                <p class="waitlist-note">Coming soon to iOS · Free to start · No spam, ever.</p>
+                <div class="waitlist-success" role="status">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    You're on the list. We'll be in touch soon. 🌸
                 </div>
             </div>
-            
-            <div class="consolidation-highlight">
-                <p>No more switching between apps, paying multiple subscriptions, or wondering why your data doesn't connect. Aster sees the whole you—because your body doesn't work in silos.</p>
-            </div>
         </div>
     </section>
 
-    <section class="unique-value">
-        <h2>Why Aster Is Different</h2>
-        <div class="value-points">
-            <div class="value-point">
-                <h3>🎯 Hyper-Personalized</h3>
-                <p>Not generic advice. Real insights based on YOUR body's data, patterns, and unique hormonal signature.</p>
+    <!-- ================= FOOTER ================= -->
+    <footer class="site">
+        <div class="wrap">
+            <div class="foot-inner">
+                <div class="foot-brand">
+                    <svg class="mark" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M11.7037 78.9999H16.0926C20.4171 79.0087 24.683 78.0003 28.5459 76.0561C32.4087 74.112 35.7602 71.2867 38.3296 67.8083L39.5 66.2429L40.6704 67.8083C43.2398 71.2867 46.5913 74.112 50.4541 76.0561C54.317 78.0003 58.5829 79.0087 62.9074 78.9999H67.2963C70.4003 78.9999 73.3771 77.7669 75.572 75.572C77.7669 73.3771 78.9999 70.4003 78.9999 67.2963V62.9074C79.0087 58.5829 78.0003 54.317 76.0561 50.4541C74.112 46.5913 71.2867 43.2398 67.8083 40.6704L66.2429 39.5L67.8083 38.3296C71.2867 35.7602 74.112 32.4087 76.0561 28.5459C78.0003 24.683 79.0087 20.4171 78.9999 16.0926V11.7037C78.9999 8.59973 77.7669 5.62285 75.572 3.42799C73.3771 1.23312 70.4003 5.63e-05 67.2963 5.63e-05H62.9074C58.5829 -0.00868 54.317 0.99973 50.4541 2.94386C46.5913 4.88799 43.2398 7.71333 40.6704 11.1917L39.5 12.7571L38.3296 11.1917C35.7602 7.71333 32.4087 4.88799 28.5459 2.94386C24.683 0.99973 20.4171 -0.00868 16.0926 5.63e-05H11.7037C8.59973 5.63e-05 5.62285 1.23312 3.42799 3.42799C1.23312 5.62285 5.63e-05 8.59973 5.63e-05 11.7037V16.0926C-0.00868 20.4171 0.99973 24.683 2.94386 28.5459C4.88799 32.4087 7.71333 35.7602 11.1917 38.3296L12.7571 39.5L11.1917 40.6704C7.71333 43.2398 4.88799 46.5913 2.94386 50.4541C0.99973 54.317 -0.00868 58.5829 5.63e-05 62.9074V67.2963C5.63e-05 70.4003 1.23312 73.3771 3.42799 75.572C5.62285 77.7669 8.59973 78.9999 11.7037 78.9999ZM43.8889 27.7963C43.8889 22.7523 45.8926 17.9149 49.4593 14.3482C53.0259 10.7816 57.8634 8.77782 62.9074 8.77782H67.2963C68.0723 8.77782 68.8165 9.08609 69.3652 9.6348C69.9139 10.1835 70.2222 10.9277 70.2222 11.7037V16.0926C70.2222 21.1366 68.2185 25.9741 64.6518 29.5407C61.0851 33.1074 56.2477 35.1111 51.2037 35.1111H43.8889V27.7963ZM43.8889 43.8889H51.2037C56.2477 43.8889 61.0851 45.8926 64.6518 49.4593C68.2185 53.0259 70.2222 57.8634 70.2222 62.9074V67.2963C70.2222 68.0723 69.9139 68.8165 69.3652 69.3652C68.8165 69.9139 68.0723 70.2222 67.2963 70.2222H62.9074C57.8634 70.2222 53.0259 68.2185 49.4593 64.6518C45.8926 61.0851 43.8889 56.2477 43.8889 51.2037V43.8889ZM8.77782 16.0926V11.7037C8.77782 10.9277 9.08609 10.1835 9.6348 9.6348C10.1835 9.08609 10.9277 8.77782 11.7037 8.77782H16.0926C21.1366 8.77782 25.9741 10.7816 29.5407 14.3482C33.1074 17.9149 35.1111 22.7523 35.1111 27.7963V35.1111H27.7963C22.7523 35.1111 17.9149 33.1074 14.3482 29.5407C10.7816 25.9741 8.77782 21.1366 8.77782 16.0926ZM8.77782 62.9074C8.77782 57.8634 10.7816 53.0259 14.3482 49.4593C17.9149 45.8926 22.7523 43.8889 27.7963 43.8889H35.1111V51.2037C35.1111 56.2477 33.1074 61.0851 29.5407 64.6518C25.9741 68.2185 21.1366 70.2222 16.0926 70.2222H11.7037C10.9277 70.2222 10.1835 69.9139 9.6348 69.3652C9.08609 68.8165 8.77782 68.0723 8.77782 67.2963V62.9074Z" fill="#6f4d96"/>
+                    </svg>
+                    <span class="name">Aster</span>
+                    <span class="tagline">Supporting women.</span>
+                </div>
+                <div class="foot-links">
+                    <a href="#features">Features</a>
+                    <a href="#how">How it works</a>
+                    <a href="#waitlist">Waitlist</a>
+                    <a href="/privacypolicy">Privacy Policy</a>
+                </div>
             </div>
-            <div class="value-point">
-                <h3>⚡ Effortlessly Simple</h3>
-                <p>No manual logging marathons. Snap your food, tap your mood, get insights. Wellness tracking in seconds, not minutes.</p>
-            </div>
-            <div class="value-point">
-                <h3>🧠 AI That Actually Helps</h3>
-                <p>Our AI connects the dots between your cycle, nutrition, energy, and mood—showing you what matters most.</p>
-            </div>
+            <div class="foot-copy">© 2026 Aster Health, Inc. All rights reserved.</div>
         </div>
-    </section>
-
-    <section class="demo-section">
-        <h2 class="section-title">See Aster In Action</h2>
-        <p class="demo-subtitle">One app. Four powerful features. Complete wellness understanding.</p>
-        
-        <div class="demo-grid">
-            <div class="demo-card">
-                <h4>Smart Insights</h4>
-                <p>Your wellness at a glance</p>
-            </div>
-            <div class="demo-card">
-                <h4>Nutrition Tracking</h4>
-                <p>Snap, analyze, understand</p>
-            </div>
-            <div class="demo-card">
-                <h4>Cycle Tracking</h4>
-                <p>Predict & prepare</p>
-            </div>
-            <div class="demo-card">
-                <h4>AI Wellness Buddy</h4>
-                <p>Ask anything, anytime</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="final-cta">
-        <h2>Ready to Understand Your Body?</h2>
-        <p>Join thousands of women who've discovered the power of personalized wellness</p>
-        <a href="#" class="cta-button">Start Your Journey Free</a>
-        <p style="margin-top: 1.5rem; color: #9ca3af; font-size: 0.95rem; font-weight: 500;">Available on iOS • Free to start • No credit card required</p>
-        <p style="margin-top: 0.9rem; color: #9ca3af; font-size: 0.95rem; font-weight: 500;"><a href="/privacypolicy" style="color: #9ca3af; font-size: 0.95rem; font-weight: 500; text-decoration: none;">Privacy Policy</a></p>
-    </section>
+    </footer>
 
     <script>
+        // ---- Waitlist (Google Apps Script endpoint preserved) ----
         const WAITLIST_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxkfuLdhEaWZyWqiRLTrazaWlvsVRub2wMI3aaUTrPy3c1039cpyRzBcxYeQAp0lfEO9Q/exec';
 
-        function handleWaitlistSubmit(event) {
-            event.preventDefault();
-            const email = event.target.querySelector('.email-input').value;
-            
-            if (!WAITLIST_ENDPOINT || WAITLIST_ENDPOINT.includes('PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE')) {
-                alert('Waitlist is not configured yet. Please try again later.');
-                return;
-            }
+        document.querySelectorAll('.waitlist-form').forEach((form) => {
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const input = form.querySelector('.waitlist-input');
+                const email = (input.value || '').trim();
+                const container = form.closest('.waitlist');
 
-            const url = `${WAITLIST_ENDPOINT}?email=${encodeURIComponent(email)}&t=${Date.now()}`;
-            fetch(url, { method: 'GET', mode: 'no-cors' })
-                .then(() => {
-                    alert('Thank you for joining the waitlist! We\'ll be in touch soon.');
-                    event.target.reset();
-                })
-                .catch(() => {
-                    alert('Sorry, something went wrong. Please try again.');
-                });
-        }
+                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    input.focus();
+                    return;
+                }
+                if (!WAITLIST_ENDPOINT || WAITLIST_ENDPOINT.includes('PASTE_YOUR')) {
+                    alert('Waitlist is not configured yet. Please try again later.');
+                    return;
+                }
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
+                const btn = form.querySelector('button');
+                btn.disabled = true;
+                btn.textContent = 'Joining…';
+
+                const url = WAITLIST_ENDPOINT + '?email=' + encodeURIComponent(email) + '&t=' + Date.now();
+                fetch(url, { method: 'GET', mode: 'no-cors' })
+                    .then(() => { if (container) container.classList.add('done'); })
+                    .catch(() => {
+                        btn.disabled = false;
+                        btn.textContent = 'Join the waitlist';
+                        alert('Sorry, something went wrong. Please try again.');
                     });
-                }
             });
         });
 
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+        // ---- Nav shadow on scroll ----
+        const nav = document.getElementById('nav');
+        const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        // ---- Reveal on scroll ----
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                    entry.target.classList.add('is-visible');
+                    io.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.feature-card, .value-point, .demo-card').forEach(el => {
-            observer.observe(el);
-        });
+        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     </script>
 </body>
 </html>
