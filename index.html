@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aster — A daily, cycle-aware wellness companion</title>
-    <meta name="description" content="Aster is a daily, cycle-aware wellness companion that turns your hormonal shifts into gentle, personalized guidance. Not another tracker — a coach that helps you feel seen.">
-    <meta name="theme-color" content="#faf6f2">
+    <title>Aster · A daily, cycle-aware wellness companion</title>
+    <meta name="description" content="Aster is a daily, cycle-aware wellness companion that turns your hormonal shifts into gentle, personalized guidance. Not another tracker. A coach that helps you feel seen.">
+    <meta name="theme-color" content="#faf7f3">
 
     <!-- Open Graph / social -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aster.fit/">
-    <meta property="og:title" content="Aster — A daily, cycle-aware wellness companion">
-    <meta property="og:description" content="Not another tracker. A coach that helps you feel seen. Cycle-aware wellness for how you actually feel — hormonally, emotionally, and practically.">
+    <meta property="og:title" content="Aster · A daily, cycle-aware wellness companion">
+    <meta property="og:description" content="Not another tracker. A coach that helps you feel seen. Cycle-aware wellness for how you actually feel: hormonally, emotionally, and practically.">
     <meta property="og:image" content="https://aster.fit/android-chrome-512x512.png">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Aster — A daily, cycle-aware wellness companion">
+    <meta name="twitter:title" content="Aster · A daily, cycle-aware wellness companion">
     <meta name="twitter:description" content="Not another tracker. A coach that helps you feel seen.">
 
     <link rel="icon" href="/favicon.ico">
@@ -33,30 +33,32 @@
     <style>
         :root {
             /* Ink / text */
-            --ink: #2c2230;
-            --ink-soft: #6c5f74;
-            --ink-faint: #978aa0;
+            --ink: #221b3e;
+            --ink-soft: #645c79;
+            --ink-faint: #948cab;
 
             /* Surfaces */
-            --cream: #faf6f2;
-            --cream-2: #f4edf3;
+            --cream: #faf7f3;
+            --cream-2: #f1ecf8;
             --panel: #fffdfb;
-            --line: rgba(44, 34, 48, 0.09);
+            --line: rgba(39, 32, 63, 0.09);
 
-            /* Brand — purple cosmos at sunset */
-            --plum: #6f4d96;
-            --plum-deep: #533a73;
-            --lilac: #b89ad8;
-            --rose: #d98fb1;
-            --peach: #f3b48d;
-            --amber: #f6cf94;
+            /* Brand: indigo to magenta to peach (app icon) */
+            --plum: #8a30bd;
+            --plum-deep: #5a1f93;
+            --lilac: #bb8fdc;
+            --rose: #fa94ca;
+            --peach: #ffc2c3;
+            --amber: #ffd6a8;
+            --indigo: #0e1938;
+            --magenta: #b84dc9;
 
-            --sunset: linear-gradient(120deg, #6f4d96 0%, #b06aa3 45%, #e191a4 72%, #f3b48d 100%);
-            --sunset-soft: linear-gradient(135deg, #f3ecf7 0%, #f9eef0 55%, #fdf2e9 100%);
+            --sunset: linear-gradient(120deg, #141b3a 0%, #4a2589 24%, #b04dc8 54%, #fa94ca 80%, #ffc2c3 100%);
+            --sunset-soft: linear-gradient(135deg, #efe9fb 0%, #f9e9f4 52%, #fdeee5 100%);
 
-            --shadow-sm: 0 2px 12px rgba(60, 40, 70, 0.06);
-            --shadow-md: 0 18px 50px rgba(80, 50, 90, 0.10);
-            --shadow-lg: 0 40px 90px rgba(80, 50, 90, 0.16);
+            --shadow-sm: 0 2px 12px rgba(45, 33, 80, 0.06);
+            --shadow-md: 0 18px 50px rgba(55, 38, 95, 0.10);
+            --shadow-lg: 0 40px 90px rgba(55, 38, 95, 0.16);
 
             --radius: 22px;
             --maxw: 1120px;
@@ -126,20 +128,20 @@
             padding: 0.95rem 1.9rem;
             color: #fff;
             background: var(--plum);
-            box-shadow: 0 10px 24px rgba(111, 77, 150, 0.28);
+            box-shadow: 0 10px 24px rgba(124, 51, 176, 0.28);
         }
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 16px 32px rgba(111, 77, 150, 0.34);
+            box-shadow: 0 16px 32px rgba(124, 51, 176, 0.34);
             background: var(--plum-deep);
         }
         .btn-ghost {
             padding: 0.7rem 1.25rem;
             color: var(--plum);
             background: transparent;
-            border: 1px solid rgba(111, 77, 150, 0.28);
+            border: 1px solid rgba(124, 51, 176, 0.28);
         }
-        .btn-ghost:hover { background: rgba(111, 77, 150, 0.06); }
+        .btn-ghost:hover { background: rgba(124, 51, 176, 0.06); }
 
         /* ---------- Nav ---------- */
         header.nav {
@@ -162,7 +164,7 @@
             padding: 0 1.5rem;
         }
         .brand { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; }
-        .brand .mark { width: 30px; height: 30px; display: block; }
+        .brand .mark { width: 30px; height: 30px; display: block; border-radius: 7px; }
         .brand .name {
             font-family: 'Fraunces', serif;
             font-weight: 600;
@@ -190,7 +192,7 @@
             position: absolute;
             width: 720px; height: 720px;
             top: -340px; right: -220px;
-            background: radial-gradient(circle, rgba(214, 143, 177, 0.20) 0%, transparent 68%);
+            background: radial-gradient(circle, rgba(255, 150, 140, 0.16) 0%, transparent 68%);
             border-radius: 50%;
             pointer-events: none;
             animation: drift 16s ease-in-out infinite;
@@ -200,7 +202,7 @@
             position: absolute;
             width: 560px; height: 560px;
             bottom: -300px; left: -200px;
-            background: radial-gradient(circle, rgba(184, 154, 216, 0.18) 0%, transparent 68%);
+            background: radial-gradient(circle, rgba(110, 47, 166, 0.16) 0%, transparent 68%);
             border-radius: 50%;
             pointer-events: none;
             animation: drift 20s ease-in-out infinite reverse;
@@ -262,8 +264,8 @@
             display: none;
             align-items: center;
             gap: 0.6rem;
-            background: rgba(111, 77, 150, 0.07);
-            border: 1px solid rgba(111, 77, 150, 0.18);
+            background: rgba(124, 51, 176, 0.07);
+            border: 1px solid rgba(124, 51, 176, 0.18);
             color: var(--plum-deep);
             font-weight: 500;
             padding: 1rem 1.3rem;
@@ -317,7 +319,7 @@
             font-weight: 600;
             letter-spacing: 0.04em;
             color: var(--plum-deep);
-            background: rgba(111,77,150,0.10);
+            background: rgba(124,51,176,0.10);
             padding: 0.32rem 0.6rem;
             border-radius: 30px;
             white-space: nowrap;
@@ -396,18 +398,20 @@
         /* ---------- Features ---------- */
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
         }
+        @media (max-width: 980px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .feature-grid { grid-template-columns: 1fr; } }
         .f-card {
             background: var(--panel);
             border: 1px solid var(--line);
             border-radius: var(--radius);
-            padding: 2rem 1.85rem;
+            padding: 1.75rem 1.5rem;
             box-shadow: var(--shadow-sm);
             transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s ease, border-color 0.35s ease;
         }
-        .f-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(111,77,150,0.18); }
+        .f-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(124,51,176,0.18); }
         .f-icon {
             width: 52px; height: 52px;
             border-radius: 15px;
@@ -417,8 +421,8 @@
             margin-bottom: 1.25rem;
         }
         .f-icon svg { width: 24px; height: 24px; }
-        .f-card h3 { font-size: 1.4rem; margin-bottom: 0.6rem; }
-        .f-card p { color: var(--ink-soft); font-size: 0.98rem; }
+        .f-card h3 { font-size: 1.25rem; margin-bottom: 0.55rem; }
+        .f-card p { color: var(--ink-soft); font-size: 0.94rem; }
 
         /* Secondary mini-features */
         .mini-grid {
@@ -483,7 +487,7 @@
             padding: 2rem 1.9rem;
         }
         .compare.plain { background: var(--panel); border: 1px solid var(--line); }
-        .compare.aster { background: var(--sunset-soft); border: 1px solid rgba(111,77,150,0.18); }
+        .compare.aster { background: var(--sunset-soft); border: 1px solid rgba(124,51,176,0.18); }
         .compare h3 { font-size: 1.3rem; margin-bottom: 1.3rem; }
         .compare.plain h3 { color: var(--ink-soft); }
         .compare.aster h3 { color: var(--plum-deep); }
@@ -546,7 +550,7 @@
             align-items: center; justify-content: space-between;
         }
         .foot-brand { display: flex; align-items: center; gap: 0.6rem; }
-        .foot-brand .mark { width: 26px; height: 26px; }
+        .foot-brand .mark { width: 26px; height: 26px; display: block; border-radius: 6px; }
         .foot-brand .name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.2rem; }
         .foot-brand .tagline { color: var(--ink-faint); font-size: 0.9rem; margin-left: 0.4rem; }
         .foot-links { display: flex; gap: 1.6rem; align-items: center; }
@@ -571,9 +575,7 @@
     <header class="nav" id="nav">
         <div class="nav-inner">
             <a href="#top" class="brand" aria-label="Aster home">
-                <svg class="mark" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M11.7037 78.9999H16.0926C20.4171 79.0087 24.683 78.0003 28.5459 76.0561C32.4087 74.112 35.7602 71.2867 38.3296 67.8083L39.5 66.2429L40.6704 67.8083C43.2398 71.2867 46.5913 74.112 50.4541 76.0561C54.317 78.0003 58.5829 79.0087 62.9074 78.9999H67.2963C70.4003 78.9999 73.3771 77.7669 75.572 75.572C77.7669 73.3771 78.9999 70.4003 78.9999 67.2963V62.9074C79.0087 58.5829 78.0003 54.317 76.0561 50.4541C74.112 46.5913 71.2867 43.2398 67.8083 40.6704L66.2429 39.5L67.8083 38.3296C71.2867 35.7602 74.112 32.4087 76.0561 28.5459C78.0003 24.683 79.0087 20.4171 78.9999 16.0926V11.7037C78.9999 8.59973 77.7669 5.62285 75.572 3.42799C73.3771 1.23312 70.4003 5.63e-05 67.2963 5.63e-05H62.9074C58.5829 -0.00868 54.317 0.99973 50.4541 2.94386C46.5913 4.88799 43.2398 7.71333 40.6704 11.1917L39.5 12.7571L38.3296 11.1917C35.7602 7.71333 32.4087 4.88799 28.5459 2.94386C24.683 0.99973 20.4171 -0.00868 16.0926 5.63e-05H11.7037C8.59973 5.63e-05 5.62285 1.23312 3.42799 3.42799C1.23312 5.62285 5.63e-05 8.59973 5.63e-05 11.7037V16.0926C-0.00868 20.4171 0.99973 24.683 2.94386 28.5459C4.88799 32.4087 7.71333 35.7602 11.1917 38.3296L12.7571 39.5L11.1917 40.6704C7.71333 43.2398 4.88799 46.5913 2.94386 50.4541C0.99973 54.317 -0.00868 58.5829 5.63e-05 62.9074V67.2963C5.63e-05 70.4003 1.23312 73.3771 3.42799 75.572C5.62285 77.7669 8.59973 78.9999 11.7037 78.9999ZM43.8889 27.7963C43.8889 22.7523 45.8926 17.9149 49.4593 14.3482C53.0259 10.7816 57.8634 8.77782 62.9074 8.77782H67.2963C68.0723 8.77782 68.8165 9.08609 69.3652 9.6348C69.9139 10.1835 70.2222 10.9277 70.2222 11.7037V16.0926C70.2222 21.1366 68.2185 25.9741 64.6518 29.5407C61.0851 33.1074 56.2477 35.1111 51.2037 35.1111H43.8889V27.7963ZM43.8889 43.8889H51.2037C56.2477 43.8889 61.0851 45.8926 64.6518 49.4593C68.2185 53.0259 70.2222 57.8634 70.2222 62.9074V67.2963C70.2222 68.0723 69.9139 68.8165 69.3652 69.3652C68.8165 69.9139 68.0723 70.2222 67.2963 70.2222H62.9074C57.8634 70.2222 53.0259 68.2185 49.4593 64.6518C45.8926 61.0851 43.8889 56.2477 43.8889 51.2037V43.8889ZM8.77782 16.0926V11.7037C8.77782 10.9277 9.08609 10.1835 9.6348 9.6348C10.1835 9.08609 10.9277 8.77782 11.7037 8.77782H16.0926C21.1366 8.77782 25.9741 10.7816 29.5407 14.3482C33.1074 17.9149 35.1111 22.7523 35.1111 27.7963V35.1111H27.7963C22.7523 35.1111 17.9149 33.1074 14.3482 29.5407C10.7816 25.9741 8.77782 21.1366 8.77782 16.0926ZM8.77782 62.9074C8.77782 57.8634 10.7816 53.0259 14.3482 49.4593C17.9149 45.8926 22.7523 43.8889 27.7963 43.8889H35.1111V51.2037C35.1111 56.2477 33.1074 61.0851 29.5407 64.6518C25.9741 68.2185 21.1366 70.2222 16.0926 70.2222H11.7037C10.9277 70.2222 10.1835 69.9139 9.6348 69.3652C9.08609 68.8165 8.77782 68.0723 8.77782 67.2963V62.9074Z" fill="#6f4d96"/>
-                </svg>
+                <img class="mark" src="/aster-icon.png" alt="">
                 <span class="name">Aster</span>
             </a>
             <nav class="nav-links">
@@ -593,7 +595,7 @@
             <div class="hero-copy">
                 <span class="eyebrow">Cycle-aware wellness</span>
                 <h1>Your body has a rhythm.<br><em>Aster helps you feel it.</em></h1>
-                <p class="lede">A daily, cycle-aware wellness companion that turns your hormonal shifts into gentle, personalized guidance. Not another tracker — a coach that helps you feel seen.</p>
+                <p class="lede">A daily, cycle-aware wellness companion that turns your hormonal shifts into gentle, personalized guidance. Not another tracker. A coach that helps you feel seen.</p>
 
                 <div class="waitlist" id="waitlist">
                     <form class="waitlist-form" novalidate>
@@ -622,11 +624,11 @@
 
                             <div class="rc-row">
                                 <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Z"/><circle cx="12" cy="9" r="2.2"/></svg></span>
-                                <span class="t"><b>Eat:</b> Magnesium-rich foods — dark chocolate, pumpkin seeds, leafy greens.</span>
+                                <span class="t"><b>Eat:</b> Magnesium-rich foods like dark chocolate, pumpkin seeds, and leafy greens.</span>
                             </div>
                             <div class="rc-row">
                                 <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12l1-8.5Z"/></svg></span>
-                                <span class="t"><b>Energy:</b> Pace yourself — favor focused, quiet tasks over big pushes.</span>
+                                <span class="t"><b>Energy:</b> Pace yourself. Favor focused, quiet tasks over big pushes.</span>
                             </div>
                             <div class="rc-row">
                                 <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span>
@@ -654,7 +656,7 @@
             <p class="lead">Most apps stop at logging. <span class="muted">You're left Googling why you feel off, drowning in generic tips that were never really about you.</span></p>
             <p class="quote">
                 "I don't want to feed an app my data. I want to feel seen."
-                <span>— the gap Aster was built to close</span>
+                <span>the gap Aster was built to close</span>
             </p>
         </div>
     </section>
@@ -665,32 +667,32 @@
             <div class="section-head reveal">
                 <span class="eyebrow">What's inside</span>
                 <h2>Guidance that adapts to how you feel</h2>
-                <p>Hormonally, emotionally, and practically — Aster meets you where you are each day.</p>
+                <p>Hormonally, emotionally, and practically. Aster meets you where you are each day.</p>
             </div>
 
             <div class="feature-grid">
                 <div class="f-card reveal">
                     <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/><path d="M12 13.5c1.2-1.4 3.5-.6 3.5 1.1 0 1.5-3.5 3.4-3.5 3.4s-3.5-1.9-3.5-3.4c0-1.7 2.3-2.5 3.5-1.1Z"/></svg></div>
                     <h3>The Daily Rhythm Card</h3>
-                    <p>One card a day, tuned to your phase and your mood: what to eat, how to pace your energy, when to rest, and a gentle note of self-compassion. One anchor — no endless scroll.</p>
+                    <p>One card a day, tuned to your phase and your mood: what to eat, how to pace your energy, when to rest, and a gentle note of self-compassion. One anchor, no endless scroll.</p>
                 </div>
 
                 <div class="f-card reveal">
                     <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg></div>
                     <h3>A coach that learns you</h3>
-                    <p>Aster notices your patterns over time. "You tend to feel low around day 24 — here's what's helped others like you." The more you check in, the more it understands your rhythm.</p>
+                    <p>Aster notices your patterns over time. "You tend to feel low around day 24, so here's what's helped others like you." The more you check in, the more it understands your rhythm.</p>
                 </div>
 
                 <div class="f-card reveal">
                     <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.2 7.6L3 21l1.9-5.8A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg></div>
                     <h3>Warm, always-there support</h3>
-                    <p>Ask Aster anything, day or night. It won't diagnose or scare you — it gently shares what's helped women in your shoes. Real comfort for the 2am questions.</p>
+                    <p>Ask Aster anything, day or night. It won't diagnose or scare you. It gently shares what's helped women in your shoes. Real comfort for the 2am questions.</p>
                 </div>
 
                 <div class="f-card reveal">
                     <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/><circle cx="8" cy="13.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="12" cy="13.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="16" cy="17" r="1.3" fill="currentColor" stroke="none"/></svg></div>
                     <h3>Your month as a moodscape</h3>
-                    <p>Not just bleeding days. See your moods, energy, and patterns laid out as a living map — so the shifts finally make sense, and nothing catches you off guard.</p>
+                    <p>Not just bleeding days. See your moods, energy, and patterns laid out as a living map, so the shifts finally make sense and nothing catches you off guard.</p>
                 </div>
             </div>
 
@@ -718,13 +720,13 @@
             <div class="section-head reveal">
                 <span class="eyebrow">Effortlessly simple</span>
                 <h2>Three taps, not a logging marathon</h2>
-                <p>Aster is built to feel lightweight — never clinical, never overwhelming.</p>
+                <p>Aster is built to feel lightweight. Never clinical, never overwhelming.</p>
             </div>
             <div class="steps">
                 <div class="step reveal">
                     <div class="num"></div>
                     <h3>Check in</h3>
-                    <p>A 10-second mood check. Tap how you feel today — "foggy," "low drive," "wired." No forms, no medical jargon.</p>
+                    <p>A 10-second mood check. Tap how you feel today: "foggy," "low drive," "wired." No forms, no medical jargon.</p>
                 </div>
                 <div class="step reveal">
                     <div class="num"></div>
@@ -776,13 +778,13 @@
             <div class="section-head reveal">
                 <span class="eyebrow">Made for you</span>
                 <h2>Wherever you are with your cycle</h2>
-                <p>Aster meets you where you are — whether your cycle runs like clockwork or keeps you guessing.</p>
+                <p>Aster meets you where you are, whether your cycle runs like clockwork or keeps you guessing.</p>
             </div>
             <div class="persona-grid">
                 <div class="persona reveal">
                     <span class="tag">Regular cycles</span>
                     <h3>Optimize & sync</h3>
-                    <p>Line up your food, workouts, and mood with your phase — and feel your best all month long.</p>
+                    <p>Line up your food, workouts, and mood with your phase, and feel your best all month long.</p>
                 </div>
                 <div class="persona reveal">
                     <span class="tag">Irregular or PCOS</span>
@@ -792,7 +794,7 @@
                 <div class="persona reveal">
                     <span class="tag">New to tracking</span>
                     <h3>Start gently</h3>
-                    <p>No clutter, no overwhelm. Just warm, one-step guidance that shows you what's happening — from day one.</p>
+                    <p>No clutter, no overwhelm. Just warm, one-step guidance that shows you what's happening, from day one.</p>
                 </div>
             </div>
         </div>
@@ -822,9 +824,7 @@
         <div class="wrap">
             <div class="foot-inner">
                 <div class="foot-brand">
-                    <svg class="mark" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M11.7037 78.9999H16.0926C20.4171 79.0087 24.683 78.0003 28.5459 76.0561C32.4087 74.112 35.7602 71.2867 38.3296 67.8083L39.5 66.2429L40.6704 67.8083C43.2398 71.2867 46.5913 74.112 50.4541 76.0561C54.317 78.0003 58.5829 79.0087 62.9074 78.9999H67.2963C70.4003 78.9999 73.3771 77.7669 75.572 75.572C77.7669 73.3771 78.9999 70.4003 78.9999 67.2963V62.9074C79.0087 58.5829 78.0003 54.317 76.0561 50.4541C74.112 46.5913 71.2867 43.2398 67.8083 40.6704L66.2429 39.5L67.8083 38.3296C71.2867 35.7602 74.112 32.4087 76.0561 28.5459C78.0003 24.683 79.0087 20.4171 78.9999 16.0926V11.7037C78.9999 8.59973 77.7669 5.62285 75.572 3.42799C73.3771 1.23312 70.4003 5.63e-05 67.2963 5.63e-05H62.9074C58.5829 -0.00868 54.317 0.99973 50.4541 2.94386C46.5913 4.88799 43.2398 7.71333 40.6704 11.1917L39.5 12.7571L38.3296 11.1917C35.7602 7.71333 32.4087 4.88799 28.5459 2.94386C24.683 0.99973 20.4171 -0.00868 16.0926 5.63e-05H11.7037C8.59973 5.63e-05 5.62285 1.23312 3.42799 3.42799C1.23312 5.62285 5.63e-05 8.59973 5.63e-05 11.7037V16.0926C-0.00868 20.4171 0.99973 24.683 2.94386 28.5459C4.88799 32.4087 7.71333 35.7602 11.1917 38.3296L12.7571 39.5L11.1917 40.6704C7.71333 43.2398 4.88799 46.5913 2.94386 50.4541C0.99973 54.317 -0.00868 58.5829 5.63e-05 62.9074V67.2963C5.63e-05 70.4003 1.23312 73.3771 3.42799 75.572C5.62285 77.7669 8.59973 78.9999 11.7037 78.9999ZM43.8889 27.7963C43.8889 22.7523 45.8926 17.9149 49.4593 14.3482C53.0259 10.7816 57.8634 8.77782 62.9074 8.77782H67.2963C68.0723 8.77782 68.8165 9.08609 69.3652 9.6348C69.9139 10.1835 70.2222 10.9277 70.2222 11.7037V16.0926C70.2222 21.1366 68.2185 25.9741 64.6518 29.5407C61.0851 33.1074 56.2477 35.1111 51.2037 35.1111H43.8889V27.7963ZM43.8889 43.8889H51.2037C56.2477 43.8889 61.0851 45.8926 64.6518 49.4593C68.2185 53.0259 70.2222 57.8634 70.2222 62.9074V67.2963C70.2222 68.0723 69.9139 68.8165 69.3652 69.3652C68.8165 69.9139 68.0723 70.2222 67.2963 70.2222H62.9074C57.8634 70.2222 53.0259 68.2185 49.4593 64.6518C45.8926 61.0851 43.8889 56.2477 43.8889 51.2037V43.8889ZM8.77782 16.0926V11.7037C8.77782 10.9277 9.08609 10.1835 9.6348 9.6348C10.1835 9.08609 10.9277 8.77782 11.7037 8.77782H16.0926C21.1366 8.77782 25.9741 10.7816 29.5407 14.3482C33.1074 17.9149 35.1111 22.7523 35.1111 27.7963V35.1111H27.7963C22.7523 35.1111 17.9149 33.1074 14.3482 29.5407C10.7816 25.9741 8.77782 21.1366 8.77782 16.0926ZM8.77782 62.9074C8.77782 57.8634 10.7816 53.0259 14.3482 49.4593C17.9149 45.8926 22.7523 43.8889 27.7963 43.8889H35.1111V51.2037C35.1111 56.2477 33.1074 61.0851 29.5407 64.6518C25.9741 68.2185 21.1366 70.2222 16.0926 70.2222H11.7037C10.9277 70.2222 10.1835 69.9139 9.6348 69.3652C9.08609 68.8165 8.77782 68.0723 8.77782 67.2963V62.9074Z" fill="#6f4d96"/>
-                    </svg>
+                    <img class="mark" src="/aster-icon.png" alt="">
                     <span class="name">Aster</span>
                     <span class="tagline">Supporting women.</span>
                 </div>
