@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap');
+
+@import "tailwindcss";
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #1A1118;
+  color: #F5EDEF;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#root { min-height: 100svh; }
+
+/* ─── Keyframes ─────────────────────────────────────────── */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-36px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(36px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+@keyframes float {
+  0%,  100% { transform: translateY(0px);    }
+  50%        { transform: translateY(-14px);  }
+}
+
+@keyframes pulseGlow {
+  0%,  100% { box-shadow: 0 0 0 0 rgba(212,122,142,0); }
+  50%        { box-shadow: 0 0 40px 8px rgba(212,122,142,0.18); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes drawLine {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes scrollBar {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ─── Utility animation classes ─────────────────────────── */
+
+.phone-float {
+  animation: float 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(to right, #D47A8E, #EDA5B3);
+  transform-origin: left;
+  z-index: 200;
+  pointer-events: none;
+}
+
+/* Cursor glow */
+.cursor-glow {
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(212,122,142,0.06) 0%, transparent 70%);
+  transition: opacity 0.3s ease;
+  will-change: left, top;
+}
+
+/* ─── Entrance animation helpers ────────────────────────── */
+
+.will-animate {
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.is-visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ─── Hover lift card ───────────────────────────────────── */
+
+.lift-card {
+  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s ease !important;
+}
+
+.lift-card:hover {
+  transform: translateY(-6px) scale(1.012) !important;
+  box-shadow: 0 20px 48px rgba(212,122,142,0.18) !important;
+}
+
+/* ─── Smooth fade-up entry ──────────────────────────────── */
+
+@keyframes gentleUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ─── Shimmer text gradient ─────────────────────────────── */
+
+.shimmer-text {
+  background: linear-gradient(90deg, #D47A8E 0%, #EDA5B3 40%, #D47A8E 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ─── Soft pulse on accent elements ────────────────────── */
+
+@keyframes softPulse {
+  0%, 100% { opacity: 0.65; }
+  50%       { opacity: 1;    }
+}
+
+/* ─── Mobile base overrides ─────────────────────────────── */
+
+@media (max-width: 767px) {
+  .cursor-glow { display: none; }
+  .lift-card:hover { transform: none !important; box-shadow: none !important; }
+}
