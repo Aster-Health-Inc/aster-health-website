@@ -27,10 +27,12 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="apple-mobile-web-app-title" content="Aster">
 
-    <!-- Fonts: Fraunces (editorial serif) + Inter (clean sans) -->
+    <!-- Fonts: Fraunces (editorial serif) + Inter (clean sans) — loaded async so they don't block first paint -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600&display=swap"></noscript>
 
     <style>
         :root {
@@ -48,12 +50,6 @@
             /* Brand: indigo to magenta to peach (app icon) */
             --plum: #8a30bd;
             --plum-deep: #5a1f93;
-            --lilac: #bb8fdc;
-            --rose: #fa94ca;
-            --peach: #ffc2c3;
-            --amber: #ffd6a8;
-            --indigo: #0e1938;
-            --magenta: #b84dc9;
 
             --sunset: linear-gradient(120deg, #141b3a 0%, #4a2589 24%, #b04dc8 54%, #fa94ca 80%, #ffc2c3 100%);
             --sunset-soft: linear-gradient(135deg, #efe9fb 0%, #f9e9f4 52%, #fdeee5 100%);
@@ -372,7 +368,6 @@
         /* ---------- Section scaffolding ---------- */
         section.block { padding: clamp(3.5rem, 8vw, 6.5rem) 0; }
         .section-head { max-width: 46rem; margin: 0 auto 3.2rem; text-align: center; }
-        .section-head.left { margin-left: 0; text-align: left; }
         .section-head h2 { font-size: clamp(2rem, 4.5vw, 3rem); margin: 1rem 0 0.9rem; }
         .section-head p { font-size: clamp(1.02rem, 1.5vw, 1.18rem); color: var(--ink-soft); }
 
