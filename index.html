@@ -12,17 +12,20 @@
     <meta property="og:url" content="https://aster.fit/">
     <meta property="og:title" content="Aster · A daily, cycle-aware wellness companion">
     <meta property="og:description" content="Not another tracker. A coach that helps you feel seen. Cycle-aware wellness for how you actually feel: hormonally, emotionally, and practically.">
-    <meta property="og:image" content="https://aster.fit/android-chrome-512x512.png">
+    <meta property="og:image" content="https://aster.fit/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Aster — a daily, cycle-aware wellness companion">
     <meta property="og:site_name" content="Aster">
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Aster · A daily, cycle-aware wellness companion">
     <meta name="twitter:description" content="Not another tracker. A coach that helps you feel seen.">
+    <meta name="twitter:image" content="https://aster.fit/og-image.png">
 
     <link rel="icon" href="/favicon.ico">
     <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
     <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
     <link rel="apple-touch-icon" href="/appletouch.png" sizes="180x180">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="apple-mobile-web-app-title" content="Aster">
@@ -54,9 +57,10 @@
             --sunset: linear-gradient(120deg, #141b3a 0%, #4a2589 24%, #b04dc8 54%, #fa94ca 80%, #ffc2c3 100%);
             --sunset-soft: linear-gradient(135deg, #efe9fb 0%, #f9e9f4 52%, #fdeee5 100%);
 
-            --shadow-sm: 0 2px 12px rgba(45, 33, 80, 0.06);
-            --shadow-md: 0 18px 50px rgba(55, 38, 95, 0.10);
-            --shadow-lg: 0 40px 90px rgba(55, 38, 95, 0.16);
+            --shadow-sm: 0 1px 2px rgba(40,28,70,0.04), 0 6px 16px rgba(60,40,95,0.06);
+            --shadow-md: 0 8px 20px rgba(55,38,95,0.08), 0 26px 52px rgba(55,38,95,0.13);
+            --shadow-lg: 0 14px 34px rgba(55,38,95,0.12), 0 52px 92px rgba(40,28,80,0.20);
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
             --radius: 22px;
             --maxw: 1120px;
@@ -593,15 +597,8 @@
         .faq-item .a a { color: var(--plum); text-decoration: underline; text-underline-offset: 2px; }
 
         /* ============================================================
-           Design polish layer (additive — overrides earlier rules)
+           Brand enhancements (extends the base rules above)
            ============================================================ */
-        :root {
-            --ease: cubic-bezier(0.22, 1, 0.36, 1);
-            --shadow-sm: 0 1px 2px rgba(40,28,70,0.04), 0 6px 16px rgba(60,40,95,0.06);
-            --shadow-md: 0 8px 20px rgba(55,38,95,0.08), 0 26px 52px rgba(55,38,95,0.13);
-            --shadow-lg: 0 14px 34px rgba(55,38,95,0.12), 0 52px 92px rgba(40,28,80,0.20);
-        }
-
         /* Gradient brand accent on emphasized words */
         .hero h1 em, .section-head h2 em, .statement .lead em {
             background: linear-gradient(108deg, #6e2fa6 0%, #b04dc8 55%, #d258c6 100%);
@@ -661,6 +658,9 @@
     </style>
 </head>
 <body>
+
+    <!-- Reusable icon sprite -->
+    <svg width="0" height="0" aria-hidden="true" style="position:absolute"><symbol id="ico-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></symbol></svg>
 
     <!-- ================= NAV ================= -->
     <a class="skip-link" href="#main">Skip to content</a>
@@ -932,27 +932,27 @@
             </div>
             <div class="faq-list reveal">
                 <details class="faq-item">
-                    <summary>When does Aster launch?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+                    <summary>When does Aster launch?<span class="chev"><svg viewBox="0 0 24 24"><use href="#ico-chev"/></svg></span></summary>
                     <div class="a">We're putting the finishing touches on it. Join the waitlist and you'll be the first to know the moment it's ready on iOS.</div>
                 </details>
                 <details class="faq-item">
-                    <summary>Is Aster free?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+                    <summary>Is Aster free?<span class="chev"><svg viewBox="0 0 24 24"><use href="#ico-chev"/></svg></span></summary>
                     <div class="a">Aster is free to start, and we'll always keep a meaningful free experience. If we add premium features later, they'll be clearly optional.</div>
                 </details>
                 <details class="faq-item">
-                    <summary>Is my data really private?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+                    <summary>Is my data really private?<span class="chev"><svg viewBox="0 0 24 24"><use href="#ico-chev"/></svg></span></summary>
                     <div class="a">Yes. We don't sell your data and never will, we don't collect it from third parties, and you can review, export, or delete it anytime. Read the full <a href="/privacy">privacy policy</a>.</div>
                 </details>
                 <details class="faq-item">
-                    <summary>Do I need a regular cycle to use Aster?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+                    <summary>Do I need a regular cycle to use Aster?<span class="chev"><svg viewBox="0 0 24 24"><use href="#ico-chev"/></svg></span></summary>
                     <div class="a">Not at all. Aster is built for every cycle, whether it runs like clockwork, is irregular, is affected by PCOS, or you're brand new to tracking.</div>
                 </details>
                 <details class="faq-item">
-                    <summary>Is Aster a medical or diagnostic tool?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+                    <summary>Is Aster a medical or diagnostic tool?<span class="chev"><svg viewBox="0 0 24 24"><use href="#ico-chev"/></svg></span></summary>
                     <div class="a">No. Aster offers gentle, everyday guidance and emotional support. It doesn't diagnose conditions or replace professional medical care.</div>
                 </details>
                 <details class="faq-item">
-                    <summary>Which devices does Aster support?<span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+                    <summary>Which devices does Aster support?<span class="chev"><svg viewBox="0 0 24 24"><use href="#ico-chev"/></svg></span></summary>
                     <div class="a">Aster is coming to iOS first. Join the waitlist and we'll let you know the moment it lands, and when Android follows.</div>
                 </details>
             </div>
