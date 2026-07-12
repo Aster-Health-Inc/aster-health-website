@@ -75,7 +75,7 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
-        h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; line-height: 1.12; }
+        h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; line-height: 1.12; text-wrap: balance; }
         em { font-style: normal; color: var(--plum); }
         a { color: inherit; }
         .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
@@ -127,9 +127,9 @@
         #hero { position: relative; text-align: center; padding: clamp(3rem, 8vw, 6rem) 1.5rem clamp(3.5rem, 9vw, 6.5rem); overflow: hidden; }
         #hero::before { content: ''; position: absolute; width: 620px; height: 620px; top: -320px; left: 50%; transform: translateX(-50%); background: radial-gradient(circle, rgba(250, 126, 194, 0.20) 0%, transparent 66%); border-radius: 50%; pointer-events: none; }
         #hero::after { content: ''; position: absolute; width: 460px; height: 460px; bottom: -260px; right: -120px; background: radial-gradient(circle, rgba(138, 48, 189, 0.14) 0%, transparent 68%); border-radius: 50%; pointer-events: none; }
-        .hero-inner { position: relative; z-index: 1; max-width: 44rem; margin: 0 auto; }
-        #hero h1 { font-size: clamp(2.5rem, 7vw, 4.4rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.02; margin: 1.5rem 0 1.2rem; }
-        #hero .lede { font-size: clamp(1.08rem, 1.7vw, 1.28rem); color: var(--ink-soft); max-width: 34rem; margin: 0 auto 2.2rem; }
+        .hero-inner { position: relative; z-index: 1; max-width: 48rem; margin: 0 auto; }
+        #hero h1 { font-size: clamp(2.4rem, 6.4vw, 4rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.04; margin: 1.5rem 0 1.3rem; }
+        #hero .lede { font-size: clamp(1.08rem, 1.7vw, 1.26rem); color: var(--ink-soft); max-width: 33rem; margin: 0 auto 2.2rem; text-wrap: pretty; }
 
         /* ---------- Waitlist ---------- */
         .waitlist { max-width: 30rem; margin: 0 auto; }
@@ -147,9 +147,9 @@
         .panel { background: transparent; }
         .panel > .wrap { background: var(--cream-2); border-radius: 40px; padding: clamp(2.6rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3.5rem); }
         .story { max-width: 40rem; }
-        .story.center { margin: 0 auto; text-align: center; }
+        .story.center { max-width: 33rem; margin: 0 auto; text-align: center; }
         .story h2 { font-size: clamp(1.9rem, 4.6vw, 3rem); font-weight: 700; margin: 1rem 0 1.3rem; }
-        .story p { font-size: clamp(1.05rem, 1.7vw, 1.22rem); color: var(--ink-soft); margin-bottom: 1.1rem; }
+        .story p { font-size: clamp(1.05rem, 1.7vw, 1.22rem); color: var(--ink-soft); margin-bottom: 1.1rem; text-wrap: pretty; }
         .story p strong { color: var(--ink); font-weight: 600; }
         .quote { margin-top: 1.8rem; font-size: clamp(1.2rem, 2.4vw, 1.6rem); font-weight: 500; font-style: italic; color: var(--plum-deep); line-height: 1.4; }
 
@@ -189,7 +189,7 @@
         /* ---------- Close ---------- */
         .close { text-align: center; }
         .close .wrap { max-width: 44rem; }
-        .close .trust { font-size: clamp(1.02rem, 1.6vw, 1.18rem); color: var(--ink-soft); max-width: 34rem; margin: 1.2rem auto 2.4rem; }
+        .close .waitlist { margin-top: 1.9rem; }
         .close .trust b { color: var(--ink); font-weight: 600; }
 
         /* ---------- Footer ---------- */
@@ -310,9 +310,11 @@
     <!-- ===== 4. YOUR BODY, YOUR DATA, JOIN ===== -->
     <section class="block panel close">
         <div class="wrap reveal">
-            <span class="eyebrow">for every you</span>
-            <h2 style="font-size:clamp(1.9rem,4.6vw,3rem);margin:1rem 0 0;">Your body. Your data. Yours.</h2>
-            <p class="trust">Regular, irregular, PCOS, or brand new to all of this, Aster meets you where you are. <b>We never sell your data</b>, and you can delete everything anytime. Your cycle is nobody's business but yours.</p>
+            <div class="story center">
+                <span class="eyebrow">for every you</span>
+                <h2>Your body. Your data. Yours.</h2>
+                <p>Regular, irregular, PCOS, or brand new to all of this, Aster meets you where you are. <strong>We never sell your data</strong>, and you can delete everything anytime. Your cycle is nobody's business but yours.</p>
+            </div>
             <div class="waitlist">
                 <form class="waitlist-form" novalidate>
                     <input class="waitlist-input" type="email" placeholder="you@email.com" aria-label="Email address" required>
