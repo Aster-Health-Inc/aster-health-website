@@ -666,6 +666,60 @@
             font-weight: 700;
             letter-spacing: -0.01em;
         }
+
+        /* ============================================================
+           Brave card system — bold dark-bordered, color-blocked cards
+           ============================================================ */
+        :root {
+            --tint-blue: #e9f4ff; --tint-pink: #ffe3f0; --tint-lav: #f1eafa; --tint-blush: #fdf3f7;
+            --card-line: #221b38; --sec-panel: #f1ebfa;
+            --bold-blue: #3f37d9; --bold-orange: #ef5722; --magenta-tag: #c5389a;
+        }
+        /* All content cards: flat, thick dark border, rounded */
+        .f-card, .persona, .step, .compare, .trust-item {
+            border: 2px solid var(--card-line);
+            border-radius: 24px;
+            box-shadow: none;
+        }
+        .f-card:hover, .persona:hover, .trust-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 34px rgba(35,25,70,0.13);
+            border-color: var(--card-line);
+        }
+        /* Feature cards — color-blocked */
+        .feature-grid .f-card:nth-child(1) { background: #fff; }
+        .feature-grid .f-card:nth-child(2) { background: var(--tint-blue); }
+        .feature-grid .f-card:nth-child(3) { background: var(--tint-pink); }
+        .feature-grid .f-card:nth-child(4) { background: var(--tint-lav); }
+        /* Mini cards — soft tints + light border */
+        .mini { border: 1.4px solid rgba(34,27,58,0.16); border-radius: 18px; }
+        .mini-grid .mini:nth-child(1) { background: var(--tint-blush); }
+        .mini-grid .mini:nth-child(2) { background: var(--tint-lav); }
+        .mini-grid .mini:nth-child(3) { background: var(--tint-blue); }
+        /* Steps — multi-colored numbered circles */
+        .steps .step:nth-child(1) .num { background: var(--plum); }
+        .steps .step:nth-child(2) .num { background: var(--bold-blue); }
+        .steps .step:nth-child(3) .num { background: var(--bold-orange); }
+        /* Comparison — dark card vs pastel-gradient card */
+        .compare.plain { background: #201f24; }
+        .compare.plain h3 { color: #fff; }
+        .compare.plain li { color: rgba(255,255,255,0.82); }
+        .compare.plain li svg { color: rgba(255,255,255,0.5); }
+        .compare.aster { background: linear-gradient(135deg, #fdecf0 0%, #f1e9fb 50%, #fdefe7 100%); }
+        .compare.aster h3 { color: var(--plum-deep); }
+        /* Personas — color-blocked + colored tags */
+        .persona-grid .persona:nth-child(2) { background: var(--tint-pink); }
+        .persona-grid .persona:nth-child(2) .tag { color: var(--magenta-tag); }
+        .persona-grid .persona:nth-child(3) { background: var(--tint-blue); }
+        .persona-grid .persona:nth-child(3) .tag { color: var(--bold-blue); }
+        /* Cream base everywhere; two sections get a rounded lavender panel */
+        .how, .statement, .faq { background: transparent; }
+        .block.tinted { background: transparent; }
+        .block.tinted > .wrap {
+            background: var(--sec-panel);
+            border-radius: 32px;
+            padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.4rem, 4vw, 3rem);
+        }
     </style>
 </head>
 <body>
@@ -849,7 +903,7 @@
     </section>
 
     <!-- ================= DIFFERENCE ================= -->
-    <section class="block">
+    <section class="block tinted">
         <div class="wrap">
             <div class="section-head reveal">
                 <span class="eyebrow">Why Aster is different</span>
@@ -879,7 +933,7 @@
     </section>
 
     <!-- ================= WHO IT'S FOR ================= -->
-    <section class="block how" id="who">
+    <section class="block tinted" id="who">
         <div class="wrap">
             <div class="section-head reveal">
                 <span class="eyebrow">Made for you</span>
